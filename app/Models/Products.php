@@ -10,7 +10,7 @@ class Products extends Model
     use HasFactory;
     public function categories()
     {
-        return $this->belongsTo(Categories::class,'category');
+        return $this->belongsTo(Category::class,'category');
     }
     public function baskets(){
         return $this->hasMany(Baskets::class,'id');
