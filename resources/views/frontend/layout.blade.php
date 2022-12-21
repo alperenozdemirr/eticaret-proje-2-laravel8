@@ -139,7 +139,9 @@
                         <div class="dropdown-menu">
                             <nav class="side-nav">
                                 <ul class="menu-vertical sf-arrows">
-                                    <li><a href="#">Beds</a></li>
+                                    @foreach($data['categories'] as $category)
+                                    <li><a href="#">{{$category->name}}</a></li>
+                                    @endforeach
                                 </ul><!-- End .menu-vertical -->
                             </nav><!-- End .side-nav -->
                         </div><!-- End .dropdown-menu -->
@@ -156,50 +158,20 @@
                                 <a href="#" class="sf-with-ul">Tüm Kategoriler</a>
 
                                 <ul>
+                                    @foreach($data['categories'] as $category)
                                     <li>
-                                        <a href="about.html" class="sf-with-ul">About</a>
+                                        <a href="about.html" class="sf-with-ul">{{$category->name}}</a>
 
                                         <ul>
-                                            <li><a href="about.html" class="sf-with-ul">About 01</a></li>
-                                            <li><a href="about-2.html">About 02</a></li>
+                                            @foreach($category->categories as $childCategory)
+                                                @include("frontend.default.child_category",['child_category'=>$childCategory])
+                                            @endforeach
                                         </ul>
                                     </li>
-                                    <li>
-                                        <a href="contact.html" class="sf-with-ul">Contact</a>
-
-                                        <ul>
-                                            <li><a href="contact.html">Contact 01</a></li>
-                                            <li><a href="contact-2.html">Contact 02</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="login.html">Login</a></li>
-
+                                    @endforeach
                                 </ul>
                             </li>
-                            <li>
-                                <a href="#" class="sf-with-ul">Pages</a>
 
-                                <ul>
-                                    <li>
-                                        <a href="about.html" class="sf-with-ul">About</a>
-
-                                        <ul>
-                                            <li><a href="about.html">About 01</a></li>
-                                            <li><a href="about-2.html">About 02</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="contact.html" class="sf-with-ul">Contact</a>
-
-                                        <ul>
-                                            <li><a href="contact.html">Contact 01</a></li>
-                                            <li><a href="contact-2.html">Contact 02</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="login.html">Login</a></li>
-
-                                </ul>
-                            </li>
 
                         </ul><!-- End .menu -->
                     </nav><!-- End .main-nav -->
