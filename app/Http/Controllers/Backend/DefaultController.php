@@ -10,4 +10,5 @@ class DefaultController extends Controller
     public function index(){
         return view('backend.default.index');
     }
+
 }

@@ -78,11 +78,16 @@
             </div>
             <ul class="side-menu metismenu">
                 <li>
-                    <a class="active" href="index.html"><i class="sidebar-item-icon fa fa-th-large"></i>
+                    <a class="active" href="{{route('bekci.index')}}"><i class="sidebar-item-icon fa fa-th-large"></i>
                         <span class="nav-label">Dashboard</span>
                     </a>
                 </li>
                 <li class="heading">Menü</li>
+                <li>
+                    <a href="{{route('bekci.userList')}}"><i class="sidebar-item-icon fa fa-user"></i>
+                        <span class="nav-label">Kullanıcı Listesi</span>
+                    </a>
+                </li>
                 <li>
                     <a href="javascript:;"><i class="sidebar-item-icon fa fa-bookmark"></i>
                         <span class="nav-label">Basic UI</span><i class="fa fa-angle-left arrow"></i></a>
@@ -124,7 +129,7 @@
         </div>
     </nav>
     <!-- END SIDEBAR-->
-
+<div class="content-wrapper">
     @yield('content')
 
     <footer class="page-footer">

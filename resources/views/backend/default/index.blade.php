@@ -1,7 +1,7 @@
 @extends('backend.layout')
 @section('title','Bekci Anasayfa')
 @section('content')
-    <div class="content-wrapper">
+
         <!-- START PAGE CONTENT-->
         <div class="page-content fade-in-up">
             <div class="row">
