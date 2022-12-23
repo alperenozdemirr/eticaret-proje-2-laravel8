@@ -90,6 +90,18 @@
                 </li>
                 <li>
                     <a href="javascript:;"><i class="sidebar-item-icon fa fa-bookmark"></i>
+                        <span class="nav-label">Kategoriler</span><i class="fa fa-angle-left arrow"></i></a>
+                    <ul class="nav-2-level collapse">
+                        <li>
+                            <a href="{{route('bekci.categoryList')}}">Kategori Listesi</a>
+                        </li>
+                        <li>
+                            <a href="{{route('bekci.newCategoryPage')}}">Kategori Ekle</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;"><i class="sidebar-item-icon fa fa-bookmark"></i>
                         <span class="nav-label">Basic UI</span><i class="fa fa-angle-left arrow"></i></a>
                     <ul class="nav-2-level collapse">
                         <li>
