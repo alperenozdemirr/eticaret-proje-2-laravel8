@@ -16,6 +16,10 @@ class Products extends Model
         return $this->hasMany(Baskets::class,'id');
     }
     public function images(){
-        return $this->belongsTo(ProductImages::class);
+        return $this->hasMany(ProductImages::class,'product_id');
     }
+    public function image(){
+        return $this->hasMany(ProductImages::class,'product_id')->orderBy('image_order')->limit(1);
+    }
+
 }

@@ -59,7 +59,7 @@
                                     <td>{{$category->name}}</td>
                                     <td>{{$category->mainCategory->name}}</td>
                                     <td>@if($category->category_order==null)Default @else{{$category->category_order}}@endif</td>
-                                    <td><a href="" class="btn btn-xs btn-info"><i class="fa fa-pencil font-14"></i></a>
+                                    <td><a href="{{route('bekci.categoryUpdatePage',$category->id)}}" class="btn btn-xs btn-info"><i class="fa fa-pencil font-14"></i></a>
                                         <a href="{{route('bekci.categoryDelete',$category->id)}}" class="btn btn-xs btn-danger"><i class="fa fa-trash font-14"></i></a>
                                     </td>
                                 </tr>

@@ -10,10 +10,18 @@
     <link href="{{asset('backend')}}/assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="{{asset('backend')}}/assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="{{asset('backend')}}/assets/vendors/themify-icons/css/themify-icons.css" rel="stylesheet" />
+    <link href="{{asset('public_directory')}}/alertify/css/alertify.min.css" rel="stylesheet">
+    <link href="{{asset('public_directory')}}/alertify/css/default.min.css" rel="stylesheet">
+    <link href="{{asset('public_directory')}}/alertify/css/semantic.min.css" rel="stylesheet">
     <!-- PLUGINS STYLES-->
     <link href="{{asset('backend')}}/assets/vendors/jvectormap/jquery-jvectormap-2.0.3.css" rel="stylesheet" />
     <!-- THEME STYLES-->
+    <link href="{{asset('public_directory')}}/dropzone/dropzone.min.css" rel="stylesheet">
     <link href="{{asset('backend')}}/assets/css/main.min.css" rel="stylesheet" />
+    <script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+    <script src="{{asset('public_directory')}}/dropzone/dropzone.min.js"></script>
+    <script src="{{asset('public_directory')}}/alertify/alertify.min.js"></script>
+
     <!-- PAGE LEVEL STYLES-->
 </head>
 
@@ -85,7 +93,7 @@
                 <li class="heading">Menü</li>
                 <li>
                     <a href="{{route('bekci.userList')}}"><i class="sidebar-item-icon fa fa-user"></i>
-                        <span class="nav-label">Kullanıcı Listesi</span>
+                        <span class="nav-label">Kullanıcı İşlemleri</span>
                     </a>
                 </li>
                 <li>
@@ -97,6 +105,18 @@
                         </li>
                         <li>
                             <a href="{{route('bekci.newCategoryPage')}}">Kategori Ekle</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;"><i class="sidebar-item-icon fa fa-bookmark"></i>
+                        <span class="nav-label">Ürün İşlemleri</span><i class="fa fa-angle-left arrow"></i></a>
+                    <ul class="nav-2-level collapse">
+                        <li>
+                            <a href="{{route('bekci.productList')}}">Ürün Listesi</a>
+                        </li>
+                        <li>
+                            <a href="{{route('bekci.productAddPage')}}">Ürün Ekle</a>
                         </li>
                     </ul>
                 </li>
@@ -158,6 +178,9 @@
 </div>
 <!-- END PAGA BACKDROPS-->
 <!-- CORE PLUGINS-->
+@if(session('success'))<script>alertify.success("Başarılı");</script>@endif
+@if(session('error'))<script>alertify.error("Başarısız");</script>@endif
+@yield('js')
 <script src="{{asset('backend')}}/assets/vendors/jquery/dist/jquery.min.js" type="text/javascript"></script>
 <script src="{{asset('backend')}}/assets/vendors/popper.js/dist/umd/popper.min.js" type="text/javascript"></script>
 <script src="{{asset('backend')}}/assets/vendors/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>

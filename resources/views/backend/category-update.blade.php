@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group">
-                            <button typeof="submit" class="btn btn-success col-md-12" type="submit">Yeni Kategori Ekle</button>
+                            <button typeof="submit" class="btn btn-success col-md-12" type="submit">Kategoriyi Güncelle</button>
                         </div>
                     </form>
                 </div>

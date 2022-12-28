@@ -20,7 +20,7 @@
                         @CSRF
                         <div class="form-group">
                             <label>Kategori İsmi</label>
-                            <input class="form-control" value="{{old('name')}}" name="name" type="text" placeholder="Kategori İsmi">
+                            <input class="form-control" @if(session('error')) value="{{old('name')}}" @endif name="name" type="text" placeholder="Kategori İsmi">
                         </div>
                         <hr>
                             <div class="form-group">
