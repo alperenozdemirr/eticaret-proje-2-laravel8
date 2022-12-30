@@ -39,6 +39,14 @@ Route::prefix('bekci/')->group(function (){
     Route::post('product/image/order-change',[\App\Http\Controllers\Backend\ProductController::class,'orderChange'])->name('bekci.imageOrder');
     Route::get('product/update/code00{id}',[\App\Http\Controllers\Backend\ProductController::class,'updatePage'])->name('bekci.productUpdatePage','id');
     Route::post('product/update',[\App\Http\Controllers\Backend\ProductController::class,'update'])->name('bekci.productUpdate');
+    Route::get('banner/list',[\App\Http\Controllers\Backend\BannerController::class,'lists'])->name('bekci.bannerList');
+    Route::get('banner-new',[\App\Http\Controllers\Backend\BannerController::class,'addPage'])->name('bekci.bannerAddPage');
+    Route::post('banner-new',[\App\Http\Controllers\Backend\BannerController::class,'add'])->name('bekci.bannerAdd');
+    Route::get('banner/update/code00{id}',[\App\Http\Controllers\Backend\BannerController::class,'updatePage'])->name('bekci.bannerUpdatePage','id');
+    Route::post('banner/update',[\App\Http\Controllers\Backend\BannerController::class,'update'])->name('bekci.bannerUpdate');
+    Route::get('banner/delete/code00{id}',[\App\Http\Controllers\Backend\BannerController::class,'delete'])->name('bekci.bannerDelete','id');
+    Route::get('banner/up/code00{id}',[\App\Http\Controllers\Backend\BannerController::class,'orderUp'])->name('bekci.bannerUp','id');
+    Route::get('banner/down/code00{id}',[\App\Http\Controllers\Backend\BannerController::class,'orderDown'])->name('bekci.bannerDown','id');
 });
 
 Route::get('/',[DefaultController::class,'index'])->name('index');
