@@ -47,6 +47,15 @@ Route::prefix('bekci/')->group(function (){
     Route::get('banner/delete/code00{id}',[\App\Http\Controllers\Backend\BannerController::class,'delete'])->name('bekci.bannerDelete','id');
     Route::get('banner/up/code00{id}',[\App\Http\Controllers\Backend\BannerController::class,'orderUp'])->name('bekci.bannerUp','id');
     Route::get('banner/down/code00{id}',[\App\Http\Controllers\Backend\BannerController::class,'orderDown'])->name('bekci.bannerDown','id');
+
+    Route::get('slider/list',[\App\Http\Controllers\Backend\SliderController::class,'lists'])->name('bekci.sliderList');
+    Route::get('slider-new',[\App\Http\Controllers\Backend\SliderController::class,'addPage'])->name('bekci.sliderAddPage');
+    Route::post('slider-new',[\App\Http\Controllers\Backend\SliderController::class,'add'])->name('bekci.sliderAdd');
+    Route::get('slider/update/code00{id}',[\App\Http\Controllers\Backend\SliderController::class,'updatePage'])->name('bekci.sliderUpdatePage','id');
+    Route::post('slider/update',[\App\Http\Controllers\Backend\SliderController::class,'update'])->name('bekci.sliderUpdate');
+    Route::get('slider/delete/code00{id}',[\App\Http\Controllers\Backend\SliderController::class,'delete'])->name('bekci.sliderDelete','id');
+    Route::get('slider/up/code00{id}',[\App\Http\Controllers\Backend\SliderController::class,'orderUp'])->name('bekci.sliderUp','id');
+    Route::get('slider/down/code00{id}',[\App\Http\Controllers\Backend\SliderController::class,'orderDown'])->name('bekci.sliderDown','id');
 });
 
 Route::get('/',[DefaultController::class,'index'])->name('index');

@@ -19,6 +19,7 @@ class CreateSlidersTable extends Migration
             $table->string('name')->nullable();
             $table->text('url')->nullable();
             $table->string('image')->nullable();
+            $table->integer('slider_order')->nullable();
             $table->timestamps();
         });
     }

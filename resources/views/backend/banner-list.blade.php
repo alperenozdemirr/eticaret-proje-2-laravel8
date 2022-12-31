@@ -29,7 +29,7 @@
                             <td>{{$loop->iteration}}</td>
                             <td><div class="btn-group btn-group-sm">
                                     <a href="{{route('bekci.bannerUp',$banner->id)}}" class="btn btn-default"><i class="fa fa-chevron-up"></i></a>
-                                     <button>{{$banner->banner_order}}</button>
+                                    <button>{{$banner->banner_order}}</button>
                                     <a href="{{route('bekci.bannerDown',$banner->id)}}" class="btn btn-default"><i class="fa fa-chevron-down"></i></a>
                                 </div></td>
                             <td>{{$banner->title}}</td>
