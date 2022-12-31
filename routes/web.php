@@ -12,8 +12,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/welcome',function (){
     return view('welcome');
 });
-
-Route::prefix('bekci/')->group(function (){
+Route::get('bekci/login',[\App\Http\Controllers\Backend\DefaultController::class,'loginPage'])->name('bekci.loginPage');
+Route::post('bekci/login',[\App\Http\Controllers\Backend\DefaultController::class,'authenticate'])->name('bekci.authenticate');
+Route::middleware(['bekci'])->group(function (){
+  Route::prefix('bekci/')->group(function (){
+      Route::get('logout',[\App\Http\Controllers\Backend\DefaultController::class,'logout'])->name('bekci.logout');
     Route::get('index',[\App\Http\Controllers\Backend\DefaultController::class,'index'])->name('bekci.index');
     Route::get('user-list',[\App\Http\Controllers\Backend\UserController::class,'lists'])->name('bekci.userList');
     Route::get('user/delete/{id}',[\App\Http\Controllers\Backend\UserController::class,'delete'])->name('bekci.userDelete','id');
@@ -56,8 +59,9 @@ Route::prefix('bekci/')->group(function (){
     Route::get('slider/delete/code00{id}',[\App\Http\Controllers\Backend\SliderController::class,'delete'])->name('bekci.sliderDelete','id');
     Route::get('slider/up/code00{id}',[\App\Http\Controllers\Backend\SliderController::class,'orderUp'])->name('bekci.sliderUp','id');
     Route::get('slider/down/code00{id}',[\App\Http\Controllers\Backend\SliderController::class,'orderDown'])->name('bekci.sliderDown','id');
-});
 
+    });
+});//bekci middleware end!
 Route::get('/',[DefaultController::class,'index'])->name('index');
 
 

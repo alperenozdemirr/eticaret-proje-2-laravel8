@@ -1,0 +1,85 @@
+html,body{
+    margin: 0 auto;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+.contanier{
+    width:100%;
+    height:100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.loginPanel{
+    width:400px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.h2{
+    text-align: center;
+}
+.loginPanel h2{
+    display: inline-block;
+    color: black;
+    font-size:22px;
+    text-align: center;
+
+}
+.loginPanel span{
+    display: flex;
+    flex-direction: column;
+
+}
+.loginPanel span p{
+    display: inline-block;
+    color: black;
+    font-size:15px;
+    margin-left: 2.5%;
+
+}
+.loginPanel form span input{
+    width:95%;
+    margin-left:2.5%;
+    padding-left:7px;
+    font-size:14px;
+    border:1px solid #cacaca;
+    border-radius:4px;
+    float: left;
+    height:45px;
+}
+.btnLogin{
+    width:95%;
+    padding-bottom:15px;
+    padding-top:15px;
+    border: none;
+    border-radius:10px;
+    color: white;
+    font-size:15px;
+    margin-top:20px;
+    margin-left:2.5%;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.8s;
+    background-color:black;
+}
+.btnLogin:hover{
+    opacity: 0.7;
+}
+/* renk kodu - rgb(252, 213, 53) - sarı */
+.loginPanel a{
+    color:black ;
+    text-decoration: none;
+    font-size:15px;
+    float: left;
+    margin-left:2.5%;
+    padding-top:10px;
+}
+.rememberme{
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    color:black;
+    margin-top:10px;
+    margin-left: 10px;
+}

@@ -2,7 +2,9 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\Bekci;
 use App\Http\Middleware\Share;
+use App\Http\Middleware\User;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -65,5 +67,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'bekci'=>Bekci::class,
+        'user'=>User::class
     ];
 }
