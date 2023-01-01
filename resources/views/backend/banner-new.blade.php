@@ -17,7 +17,7 @@
                     </div>
                 </div>
                 <div class="alert alert-warning alert-dismissable fade show">
-                    <button class="close" data-dismiss="alert" aria-label="Close">×</button><strong>Uyarı!</strong>Banner Sıra numarası en büyük sayılı 3 banner listelenir!</div>
+                    <button class="close" data-dismiss="alert" aria-label="Close">×</button><strong>Uyarı!</strong>Banner Sırası ilk 3 banner listelenir!</div>
                 <div class="ibox-body" style="">
                     <form   action="{{route('bekci.bannerAdd')}}" enctype="multipart/form-data" method="POST">
                         @CSRF

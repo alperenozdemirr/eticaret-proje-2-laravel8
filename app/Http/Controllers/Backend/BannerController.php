@@ -12,7 +12,7 @@ class BannerController extends Controller
 {
     // title,info,image,url,banner_order
     public function lists(){
-        $banners=Banners::orderByDesc('banner_order')->get();
+        $banners=Banners::orderBy('banner_order')->get();
         return view('backend.banner-list')->with(compact('banners'));
     }
     public function addPage(){

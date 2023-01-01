@@ -17,61 +17,30 @@
                                             }
                                         }
                                     }'>
+                                @foreach($sliders as $slider)
                                 <div class="intro-slide">
                                     <figure class="slide-image">
                                         <picture>
-                                            <source media="(max-width: 480px)" srcset="{{asset('frontend')}}/assets/images/demos/demo-3/slider/slide-1-480w.jpg">
-                                            <img src="{{asset('frontend')}}/assets/images/demos/demo-3/slider/slide-1.jpg" alt="Image Desc">
+                                            <source media="(max-width: 480px)" srcset="{{asset('public_directory')}}/image/sliders/{{$slider->image}}">
+                                            <img src="{{asset('public_directory')}}/image/sliders/{{$slider->image}}" alt="Image Desc">
                                         </picture>
                                     </figure><!-- End .slide-image -->
 
                                     <div class="intro-content">
-                                        <h3 class="intro-subtitle text-primary">Daily Deals</h3><!-- End .h3 intro-subtitle -->
+                                        <h3 class="intro-subtitle text-primary">{!!  $slider->title !!}</h3><!-- End .h3 intro-subtitle -->
                                         <h1 class="intro-title">
-                                            AirPods <br>Earphones
+
+                                            {!! $slider->name !!}
                                         </h1><!-- End .intro-title -->
 
-                                        <div class="intro-price">
-                                            <sup>Today:</sup>
-                                            <span class="text-primary">
-                                                    $247<sup>.99</sup>
-                                                </span>
-                                        </div><!-- End .intro-price -->
 
-                                        <a href="category.html" class="btn btn-primary btn-round">
-                                            <span>Click Here</span>
+                                        <a href="{{$slider->url}}" class="btn btn-primary btn-round">
+                                            <span>İncele</span>
                                             <i class="icon-long-arrow-right"></i>
                                         </a>
                                     </div><!-- End .intro-content -->
                                 </div><!-- End .intro-slide -->
-
-                                <div class="intro-slide">
-                                    <figure class="slide-image">
-                                        <picture>
-                                            <source media="(max-width: 480px)" srcset="{{asset('frontend')}}/assets/images/demos/demo-3/slider/slide-2-480w.jpg">
-                                            <img src="{{asset('frontend')}}/assets/images/demos/demo-3/slider/slide-2.jpg" alt="Image Desc">
-                                        </picture>
-                                    </figure><!-- End .slide-image -->
-
-                                    <div class="intro-content">
-                                        <h3 class="intro-subtitle text-primary">Deals and Promotions</h3><!-- End .h3 intro-subtitle -->
-                                        <h1 class="intro-title">
-                                            Echo Dot <br>3rd Gen
-                                        </h1><!-- End .intro-title -->
-
-                                        <div class="intro-price">
-                                            <sup class="intro-old-price">$49,99</sup>
-                                            <span class="text-primary">
-                                                    $29<sup>.99</sup>
-                                                </span>
-                                        </div><!-- End .intro-price -->
-
-                                        <a href="category.html" class="btn btn-primary btn-round">
-                                            <span>Click Here</span>
-                                            <i class="icon-long-arrow-right"></i>
-                                        </a>
-                                    </div><!-- End .intro-content -->
-                                </div><!-- End .intro-slide -->
+                                @endforeach
                             </div><!-- End .intro-slider owl-carousel owl-simple -->
 
                             <span class="slider-loader"></span><!-- End .slider-loader -->
@@ -80,41 +49,19 @@
 
                     <div class="col-lg-4">
                         <div class="intro-banners">
+                            @foreach($banners as $banner)
                             <div class="banner mb-lg-1 mb-xl-2">
                                 <a href="#">
-                                    <img src="{{asset('frontend')}}/assets/images/demos/demo-3/banners/banner-1.jpg" alt="Banner">
+                                    <img src="{{asset('public_directory')}}/image/banners/{{$banner->image}}" alt="Banner">
                                 </a>
 
                                 <div class="banner-content">
-                                    <h4 class="banner-subtitle d-lg-none d-xl-block"><a href="#">Top Product</a></h4><!-- End .banner-subtitle -->
-                                    <h3 class="banner-title"><a href="#">Edifier <br>Stereo Bluetooth</a></h3><!-- End .banner-title -->
-                                    <a href="#" class="banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
+                                    <h4 class="banner-subtitle d-lg-none d-xl-block"><a href="#">{{$banner->title}}</a></h4><!-- End .banner-subtitle -->
+                                    <h3 class="banner-title"><a href="#">{!! $banner->info !!}</a></h3><!-- End .banner-title -->
+                                    <a href="{{$banner->url}}" class="banner-link">İncele<i class="icon-long-arrow-right"></i></a>
                                 </div><!-- End .banner-content -->
                             </div><!-- End .banner -->
-
-                            <div class="banner mb-lg-1 mb-xl-2">
-                                <a href="#">
-                                    <img src="{{asset('frontend')}}/assets/images/demos/demo-3/banners/banner-2.jpg" alt="Banner">
-                                </a>
-
-                                <div class="banner-content">
-                                    <h4 class="banner-subtitle d-lg-none d-xl-block"><a href="#">Clearance</a></h4><!-- End .banner-subtitle -->
-                                    <h3 class="banner-title"><a href="#">GoPro - Fusion 360 <span>Save $70</span></a></h3><!-- End .banner-title -->
-                                    <a href="#" class="banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
-                                </div><!-- End .banner-content -->
-                            </div><!-- End .banner -->
-
-                            <div class="banner mb-0">
-                                <a href="#">
-                                    <img src="{{asset('frontend')}}/assets/images/demos/demo-3/banners/banner-3.jpg" alt="Banner">
-                                </a>
-
-                                <div class="banner-content">
-                                    <h4 class="banner-subtitle d-lg-none d-xl-block"><a href="#">Featured</a></h4><!-- End .banner-subtitle -->
-                                    <h3 class="banner-title"><a href="#">Apple Watch 4 <span>Our Hottest Deals</span></a></h3><!-- End .banner-title -->
-                                    <a href="#" class="banner-link">Shop Now<i class="icon-long-arrow-right"></i></a>
-                                </div><!-- End .banner-content -->
-                            </div><!-- End .banner -->
+                            @endforeach
                         </div><!-- End .intro-banners -->
                     </div><!-- End .col-lg-4 -->
                 </div><!-- End .row -->
@@ -129,7 +76,7 @@
                 <li class="nav-item">
                     <a class="nav-link" id="products-sale-link" data-toggle="tab" href="#products-sale-tab" role="tab" aria-controls="products-sale-tab" aria-selected="false">Tüm Ürünler</a>
                 </li>
-                
+
             </ul>
 
             <div class="tab-content tab-content-carousel">
@@ -155,189 +102,50 @@
                                     }
                                 }
                             }'>
+                        @foreach($products as $product)
                         <div class="product product-2">
-                            <figure class="product-media">
+                            <figure style="background-color: white" class="product-media ">
+                                <div class="d-flex justify-content-center">
                                 <a href="product.html">
-                                    <img src="{{asset('frontend')}}/assets/images/demos/demo-3/products/product-1.jpg" alt="Product image" class="product-image">
+                                    @foreach($product->image as $item)
+                                    <img style="height:200px;width: auto;" src="{{asset('public_directory')}}/image/products/{{$item->image}}" alt="Product image" class="product-image">
+                                    @endforeach
                                 </a>
+                                </div>
 
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action -->
 
                                 <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
+                                    <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>Ürünü İncele</span></a>
                                 </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->
 
                             <div class="product-body">
                                 <div class="product-cat">
-                                    <a href="#">Cameras & Camcorders</a>
+                                    <a href="#">{{$product->categories->name}}</a>
                                 </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">GoPro - HERO7 Black HD Waterproof Action</a></h3><!-- End .product-title -->
+                                <h3 class="product-title"><a href="product.html">{{$product->name}}</a></h3><!-- End .product-title -->
                                 <div class="product-price">
-                                    $349.99
+                                    {{$product->price}}TL
                                 </div><!-- End .product-price -->
                                 <div class="ratings-container">
                                     <div class="ratings">
                                         <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
                                     </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 2 Reviews )</span>
+
                                 </div><!-- End .rating-container -->
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
-
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <span class="product-label label-circle label-new">New</span>
-                                <a href="product.html">
-                                    <img src="{{asset('frontend')}}/assets/images/demos/demo-3/products/product-2.jpg" alt="Product image" class="product-image">
-                                    <img src="{{asset('frontend')}}/assets/images/demos/demo-3/products/product-2-2.jpg" alt="Product image" class="product-image-hover">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action -->
-
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Smartwatches</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">Apple - Apple Watch Series 3 with White Sport Band</a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    $214.99
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 0%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 0 Reviews )</span>
-                                </div><!-- End .rating-container -->
-
-                                <div class="product-nav product-nav-dots">
-                                    <a href="#" class="active" style="background: #e2e2e2;"><span class="sr-only">Color name</span></a>
-                                    <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                    <a href="#" style="background: #f2bc9e;"><span class="sr-only">Color name</span></a>
-                                </div><!-- End .product-nav -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="{{asset('frontend')}}/assets/images/demos/demo-3/products/product-3.jpg" alt="Product image" class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action -->
-
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Laptops</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">Lenovo - 330-15IKBR 15.6"</a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    <span class="out-price">$339.99</span>
-                                    <span class="out-text">Out of Stock</span>
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 3 Reviews )</span>
-                                </div><!-- End .rating-container -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="{{asset('frontend')}}/assets/images/demos/demo-3/products/product-4.jpg" alt="Product image" class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action -->
-
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Digital Cameras</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">Sony - Alpha a5100 Mirrorless Camera</a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    $499.99
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 70%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 11 Reviews )</span>
-                                </div><!-- End .rating-container -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product product-2">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="{{asset('frontend')}}/assets/images/demos/demo-3/products/product-1.jpg" alt="Product image" class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action -->
-
-                                <div class="product-action product-action-dark">
-                                    <a href="#" class="btn-product btn-cart" title="Add to cart"><span>add to cart</span></a>
-                                    <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>quick view</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Cameras & Camcorders</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">GoPro - HERO7 Black HD Waterproof Action</a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    $349.99
-                                </div><!-- End .product-price -->
-                                <div class="ratings-container">
-                                    <div class="ratings">
-                                        <div class="ratings-val" style="width: 60%;"></div><!-- End .ratings-val -->
-                                    </div><!-- End .ratings -->
-                                    <span class="ratings-text">( 2 Reviews )</span>
-                                </div><!-- End .rating-container -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
+                        @endforeach
                     </div><!-- End .owl-carousel -->
                 </div><!-- .End .tab-pane -->
-                
-                
+
+
             </div><!-- End .tab-content -->
         </div><!-- End .container -->
 
         <div class="mb-7 mb-lg-11"></div><!-- End .mb-7 -->
 
-        
+
 
         <div class="icon-boxes-container mt-2 mb-2 bg-transparent">
             <div class="container">
