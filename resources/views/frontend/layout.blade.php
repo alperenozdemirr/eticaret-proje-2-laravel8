@@ -25,6 +25,7 @@
     <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" href="{{asset('frontend')}}/assets/vendor/line-awesome/line-awesome/line-awesome/css/line-awesome.min.css">
     <!-- Plugins CSS File -->
+
     <link rel="stylesheet" href="{{asset('frontend')}}/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('frontend')}}/assets/css/plugins/owl-carousel/owl.carousel.css">
     <link rel="stylesheet" href="{{asset('frontend')}}/assets/css/plugins/magnific-popup/magnific-popup.css">
@@ -33,6 +34,8 @@
     <link rel="stylesheet" href="{{asset('frontend')}}/assets/css/style.css">
     <link rel="stylesheet" href="{{asset('frontend')}}/assets/css/skins/skin-demo-3.css">
     <link rel="stylesheet" href="{{asset('frontend')}}/assets/css/demos/demo-3.css">
+    <link rel="stylesheet" href="{{asset('frontend')}}/assets/css/plugins/nouislider/nouislider.css">
+    @yield('css')
 </head>
 
 <body>
@@ -609,6 +612,7 @@
     </div>
 </div>
 <!-- Plugins JS File -->
+
 <script src="{{asset('frontend')}}/assets/js/jquery.min.js"></script>
 <script src="{{asset('frontend')}}/assets/js/bootstrap.bundle.min.js"></script>
 <script src="{{asset('frontend')}}/assets/js/jquery.hoverIntent.min.js"></script>
@@ -617,7 +621,8 @@
 <script src="{{asset('frontend')}}/assets/js/owl.carousel.min.js"></script>
 <script src="{{asset('frontend')}}/assets/js/bootstrap-input-spinner.js"></script>
 <script src="{{asset('frontend')}}/assets/js/jquery.plugin.min.js"></script>
-<script src="{{asset('frontend')}}/assets/js/jquery.magnific-popup.min.js"></script>
+
+<script src="{{asset('frontend')}}/assets/js/jquery.elevateZoom.min.js"></script>
 <script src="{{asset('frontend')}}/assets/js/jquery.countdown.min.js"></script>
 <!-- Main JS File -->
 <script src="{{asset('frontend')}}/assets/js/main.js"></script>

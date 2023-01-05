@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\DefaultController;
+use App\Http\Controllers\Frontend\ProductController;
 //test router
 /*
 Route::get('products',[\App\Http\Controllers\TestController::class,'products']);
@@ -62,8 +63,11 @@ Route::middleware(['bekci'])->group(function (){
 
     });
 });//bekci middleware end!
+Route::get('product/code00{id}',[ProductController::class,'product'])->name('single.product','id');
 Route::get('/',[DefaultController::class,'index'])->name('index');
+Route::get('shop',[ProductController::class,'shop'])->name('shop');
 
+Route::get('testFun',[DefaultController::class,'testFun'])->name('testFun');
 
 
 

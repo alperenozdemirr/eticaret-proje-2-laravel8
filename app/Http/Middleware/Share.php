@@ -21,6 +21,7 @@ class Share
     {
         $categories=Category::whereNull('category_id')->with('childrenCategories')->get();
         $data['categories']=$categories;
+        $data['categories_all']=Category::all();
         View::share('data',$data);
 
         return $next($request);
