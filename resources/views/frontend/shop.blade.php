@@ -93,13 +93,11 @@
                                         <figure style="background-color: white;" class="product-media">
                                             <span class="product-label label-new">New</span>
                                             <div class="d-flex justify-content-center">
-                                            <a href="product.html">
-                                                @foreach($product->image as $item)
-                                                <img style="width: auto;height: 200px;" src="{{asset('public_directory')}}/image/products/{{$item->image}}" alt="Product image" class="product-image">
-                                                @endforeach
+                                            <a href="{{route('single.product',$product->id)}}">
+                                                <img style="width: auto;height: 200px;" src="{{asset('public_directory')}}/image/products/{{$product->images[0]->image}}" alt="Product image" class="product-image">
                                             </a></div>
                                             <div class="product-action">
-                                                <a href="#" class="btn-product btn-cart"><span>Ürünü İncele</span></a>
+                                                <a href="{{route('single.product',$product->id)}}" class="btn-product btn-cart"><span>Ürünü İncele</span></a>
                                             </div><!-- End .product-action -->
                                         </figure><!-- End .product-media -->
 
@@ -107,7 +105,7 @@
                                             <div class="product-cat">
                                                 <a href="#">{{$product->categories->name}}</a>
                                             </div><!-- End .product-cat -->
-                                            <h3 class="product-title"><a href="product.html">{{$product->name}}</a></h3><!-- End .product-title -->
+                                            <h3 class="product-title"><a href="{{route('single.product',$product->id)}}">{{$product->name}}</a></h3><!-- End .product-title -->
                                             <div class="product-price">
                                                 {{$product->price}}TL
                                             </div><!-- End .product-price -->
@@ -115,7 +113,7 @@
                                                 <div class="ratings">
                                                     <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
                                                 </div><!-- End .ratings -->
-                                                <span class="ratings-text">( 2 Reviews )</span>
+                                                <span class="ratings-text">( {{$product->images->count()}} Resim )</span>
                                             </div><!-- End .rating-container -->
                                         </div><!-- End .product-body -->
                                     </div><!-- End .product -->
@@ -337,5 +335,4 @@
     </main>
 @endsection
 @section('css') @endsection
-@section('js')
-@endsection
+@section('js')@endsection

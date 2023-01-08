@@ -1,6 +1,8 @@
 @extends('frontend.layout')
 @section('title',$product->name)
 @section('content')
+    <form action="{{route('basketAdd')}}" method="POST">
+        @CSRF
     <main class="main">
         <div class="page-content">
             <div class="product-details-top">
@@ -38,7 +40,7 @@
                             <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1422px;">
                                     @foreach($product->images as $image)
                                     <div class="owl-item active" style="width: 355.333px;"><figure class="product-gallery-image">
-                                            <img src="{{asset('public_directory')}}/image/products/{{$image->image}}" data-zoom-image="{{asset('public_directory')}}/image/products/{{$image->image}}" alt="product image">
+                                            <img style="height:300px;width: auto;" src="{{asset('public_directory')}}/image/products/{{$image->image}}" data-zoom-image="{{asset('public_directory')}}/image/products/{{$image->image}}" alt="product image">
                                         </figure></div>
                                     @endforeach
                                     </div></div><div class="owl-nav"><button type="button" role="presentation" class="owl-prev disabled"><i class="icon-angle-left"></i></button><button type="button" role="presentation" class="owl-next"><i class="icon-angle-right"></i></button></div><div class="owl-dots disabled"></div></div><!-- End .owl-carousel -->
@@ -71,10 +73,10 @@
                                 <div class="product-details-action">
                                     <div class="details-action-col">
                                         <div class="product-details-quantity">
-                                            <input type="number" id="qty" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required="" style="display: none;"><div class="input-group  input-spinner"></div>
+                                            <input type="number" id="qty" name="count" class="form-control" value="1" min="1" max="30" step="1" data-decimals="0" required="" style="display: none;"><div class="input-group  input-spinner"></div>
                                         </div><!-- End .product-details-quantity -->
-
-                                        <a href="#" class="btn-product btn-cart"><span>Sepete Ekle</span></a>
+                                            <input type="hidden" name="product_id" value="{{$product->id}}">
+                                        <button type="submit" class="btn-product btn-cart"><span>Sepete Ekle</span></button>
                                     </div><!-- End .details-action-col -->
                                 </div><!-- End .product-details-action -->
 
@@ -188,6 +190,7 @@
             </div><!-- End .container -->
         </div><!-- End .page-content -->
     </main>
+    </form>
 
 
 @endsection

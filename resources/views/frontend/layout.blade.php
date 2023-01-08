@@ -76,7 +76,23 @@
                                         </div><!-- End .header-menu -->
                                     </div>
                                 </li>
-                                <li><a href="#signin-modal" data-toggle="modal">Giriş Yap | Üye Ol</a></li>
+                                @if(\Illuminate\Support\Facades\Auth::user())
+                                    <li>
+                                        <div class="header-dropdown">
+                                            <a href="#">Hesabım</a>
+                                            <div class="header-menu">
+                                                <ul>
+                                                    <li><a href="#">{{\Illuminate\Support\Facades\Auth::user()->name}}</a></li>
+                                                    <li><a href="#">Bilgilerim</a></li>
+                                                    <li><a href="#">Sipariş Bilgilerim</a></li>
+                                                    <li><a href="{{route('user.logout')}}">Çıkış Yap</a></li>
+                                                </ul>
+                                            </div><!-- End .header-menu -->
+                                        </div>
+                                    </li>
+                                    @else
+                                    <li><a href="{{route('user.loginPage')}}" >Giriş Yap | Üye Ol</a></li>
+                                @endif
                             </ul>
                         </li>
                     </ul><!-- End .top-menu -->
@@ -93,7 +109,7 @@
                         <i class="icon-bars"></i>
                     </button>
 
-                    <a href="index.html" class="logo">
+                    <a href="{{route('index')}}" class="logo">
                         <img src="{{asset('frontend')}}/assets/images/demos/demo-3/logo.png" alt="Molla Logo" width="105" height="25">
                     </a>
                 </div><!-- End .header-left -->
@@ -117,12 +133,12 @@
 
 
                     <div class="dropdown cart-dropdown">
-                        <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                        <a href="{{route('shoppingCart')}}" class="dropdown-toggle" >
                             <div class="icon">
                                 <i class="icon-shopping-cart"></i>
-                                <span class="cart-count">0</span>
+                                <span class="cart-count">{{\App\Http\Controllers\Frontend\DefaultController::basketCount()}}</span>
                             </div>
-                            <p>Cart</p>
+                            <p>Sepetim</p>
                         </a>
 
 
@@ -155,8 +171,8 @@
                     <nav class="main-nav">
                         <ul class="menu sf-arrows">
 
-                            <li><a href="#">Anasayfa</a></li>
-                            <li><a href="#">Ürünler</a></li>
+                            <li><a href="{{route('index')}}">Anasayfa</a></li>
+                            <li><a href="{{route('shop')}}">Ürünler</a></li>
                             <li>
                                 <a href="#" class="sf-with-ul">Tüm Kategoriler</a>
 

@@ -107,23 +107,21 @@
                             <figure style="background-color: white" class="product-media ">
                                 <div class="d-flex justify-content-center">
                                 <a href="product.html">
-                                    @foreach($product->image as $item)
-                                    <img style="height:200px;width: auto;" src="{{asset('public_directory')}}/image/products/{{$item->image}}" alt="Product image" class="product-image">
-                                    @endforeach
+                                    <img style="height:200px;width: auto;" src="{{asset('public_directory')}}/image/products/{{$product->images[0]->image}}" alt="Product image" class="product-image">
                                 </a>
                                 </div>
 
 
                                 <div class="product-action product-action-dark">
-                                    <a href="popup/quickView.html" class="btn-product btn-quickview" title="Quick view"><span>Ürünü İncele</span></a>
+                                    <a href="{{route('single.product',$product->id)}}" class="btn-product btn-quickview" title="Quick view"><span>Ürünü İncele</span></a>
                                 </div><!-- End .product-action -->
                             </figure><!-- End .product-media -->
 
                             <div class="product-body">
                                 <div class="product-cat">
-                                    <a href="#">{{$product->categories->name}}</a>
+                                    <a href="">{{$product->categories->name}}</a>
                                 </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">{{$product->name}}</a></h3><!-- End .product-title -->
+                                <h3 class="product-title"><a href="{{route('single.product',$product->id)}}">{{$product->name}}</a></h3><!-- End .product-title -->
                                 <div class="product-price">
                                     {{$product->price}}TL
                                 </div><!-- End .product-price -->

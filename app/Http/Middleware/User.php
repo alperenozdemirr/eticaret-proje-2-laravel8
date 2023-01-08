@@ -16,6 +16,11 @@ class User
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if(!\Auth::guest() && \Auth::user()->type==1){
+            return $next($request);
+        }else{
+            return  redirect(route('user.loginPage'))->with('error','Geçersiz Bilgi');
+        }
+        return redirect(route('user.loginPage'));
     }
 }

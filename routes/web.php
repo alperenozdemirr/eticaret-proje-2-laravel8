@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\DefaultController;
 use App\Http\Controllers\Frontend\ProductController;
+use App\Http\Controllers\Frontend\ShoppingCartController;
 //test router
 /*
 Route::get('products',[\App\Http\Controllers\TestController::class,'products']);
@@ -63,12 +64,26 @@ Route::middleware(['bekci'])->group(function (){
 
     });
 });//bekci middleware end!
+Route::get('user/login',[DefaultController::class,'loginPage'])->name('user.loginPage');
+Route::post('user/login',[DefaultController::class,'authenticate'])->name('user.authenticate');
+Route::get('user/register',[DefaultController::class,'registerPage'])->name('user.registerPage');
+Route::post('user/register',[DefaultController::class,'cacheRegister'])->name('cacheRegister');
+Route::get('user/two-confirmation',[DefaultController::class,'confirmationPage'])->name('confirmationPage');
+Route::get('user/get-code',[DefaultController::class,'getCode'])->name('getCode');
+Route::post('user/two-confirmation',[DefaultController::class,'confirmation'])->name('confirmation');
+Route::get('user/logout',[DefaultController::class,'logout'])->name('user.logout');
 Route::get('product/code00{id}',[ProductController::class,'product'])->name('single.product','id');
 Route::get('/',[DefaultController::class,'index'])->name('index');
 Route::get('shop',[ProductController::class,'shop'])->name('shop');
-
+Route::middleware(['user'])->group(function (){
+    Route::get('shopping-cart',[ShoppingCartController::class,'list'])->name('shoppingCart');
+    Route::post('basket/add',[ShoppingCartController::class,'add'])->name('basketAdd');
+    Route::get('basket/delete{id}',[ShoppingCartController::class,'delete'])->name('basketDelete','id');
+    Route::get('basket/count-up{id}',[ShoppingCartController::class,'countUp'])->name('basketCountUp','id');
+    Route::get('basket/count-down{id}',[ShoppingCartController::class,'countDown'])->name('basketCountDown','id');
+});
 Route::get('testFun',[DefaultController::class,'testFun'])->name('testFun');
-
+Route::get('testMail',[DefaultController::class,'testMail'])->name('testMail');
 
 
 
