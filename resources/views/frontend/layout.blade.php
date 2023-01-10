@@ -628,7 +628,7 @@
     </div>
 </div>
 <!-- Plugins JS File -->
-
+@yield('js')
 <script src="{{asset('frontend')}}/assets/js/jquery.min.js"></script>
 <script src="{{asset('frontend')}}/assets/js/bootstrap.bundle.min.js"></script>
 <script src="{{asset('frontend')}}/assets/js/jquery.hoverIntent.min.js"></script>

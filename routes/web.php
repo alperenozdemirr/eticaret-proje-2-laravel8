@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\DefaultController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\ShoppingCartController;
+use App\Http\Controllers\Frontend\OrderController;
 //test router
 /*
 Route::get('products',[\App\Http\Controllers\TestController::class,'products']);
@@ -81,6 +82,9 @@ Route::middleware(['user'])->group(function (){
     Route::get('basket/delete{id}',[ShoppingCartController::class,'delete'])->name('basketDelete','id');
     Route::get('basket/count-up{id}',[ShoppingCartController::class,'countUp'])->name('basketCountUp','id');
     Route::get('basket/count-down{id}',[ShoppingCartController::class,'countDown'])->name('basketCountDown','id');
+    Route::get('checkout',[OrderController::class,'checkoutPage'])->name('checkoutPage');
+    Route::post('checkout',[OrderController::class,'checkout'])->name('checkout');
+    Route::get('checkout/payment',[OrderController::class,'paymentPage'])->name('paymentPage');
 });
 Route::get('testFun',[DefaultController::class,'testFun'])->name('testFun');
 Route::get('testMail',[DefaultController::class,'testMail'])->name('testMail');
