@@ -13,4 +13,7 @@ class OrderDetails extends Model
     {
         return $this->belongsTo(Products::class,'product_id');
     }
+    public function images(){
+        return $this->hasMany(ProductImages::class,'product_id','product_id');
+    }
 }

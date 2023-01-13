@@ -85,6 +85,9 @@ Route::middleware(['user'])->group(function (){
     Route::get('checkout',[OrderController::class,'checkoutPage'])->name('checkoutPage');
     Route::post('checkout',[OrderController::class,'checkout'])->name('checkout');
     Route::get('checkout/payment',[OrderController::class,'paymentPage'])->name('paymentPage');
+    Route::get('new-order',[OrderController::class,'newOrder'])->name('newOrder');
+    Route::get('account/my-orders',[OrderController::class,'orderPage'])->name('orderPage');
+    Route::get('account/my-orders/order-code{id}',[OrderController::class,'details'])->name('orderDetails','id');
 });
 Route::get('testFun',[DefaultController::class,'testFun'])->name('testFun');
 Route::get('testMail',[DefaultController::class,'testMail'])->name('testMail');

@@ -34,7 +34,7 @@
                         <input disabled type="text" value="12/25"  class="form-control">
                     </div>
                     <div class="form-group">
-                        <button class="btn btn-dark col-md-12">Ödemeyi Onayla</button>
+                        <a href="{{route('newOrder')}}" class="btn btn-dark col-md-12">Ödemeyi Onayla</a>
                     </div>
                 </div>
             </div>
