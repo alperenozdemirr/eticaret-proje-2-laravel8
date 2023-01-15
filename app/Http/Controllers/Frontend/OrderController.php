@@ -9,6 +9,7 @@ use App\Models\Baskets;
 use App\Models\Cities;
 use App\Models\OrderDetails;
 use App\Models\Orders;
+use App\Models\Products;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -67,6 +68,7 @@ public function checkout(Request $request){
         $total_price=0;
         $product_count=0;
         foreach ($baskets as $basket){
+            if ($basket->products->stock==0){ return redirect(route('shoppingCart')); }
             $total_price+=$basket->products->price*$basket->product_count;
             $product_count=$basket->product_count;
         }
@@ -87,13 +89,18 @@ public function checkout(Request $request){
                 $orderDetails->product_id=$basket->product_id;
                 $orderDetails->product_price=$basket->products->price*$basket->product_count;
                 $orderDetails->product_count=$basket->product_count;
-                $orderDetails->save();
+                //stok kontrol
+                $stock=Products::find($basket->product_id);
+                if($stock->stock - $basket->product_count > 0){
+                    $orderDetails->save();
+                    $stock->stock=$stock->stock - $basket->product_count;
+                    $stock->save();
+                }
             }
             //E-fatura mail gönder..
             //mail_varible name,time,code,totalCount,totalPrice
             $data['name']=Auth::user()->name;$data['time']=$last_time;$data['code']=$lastId;
             $data['totalCount']=$product_count;$data['totalPrice']=$total_price;
-
             dispatch(new NewOrderMailJob($data,$email));
             Baskets::where('user_id',Auth::user()->id)->delete();
             return redirect(route('orderPage'));
@@ -102,8 +109,7 @@ public function checkout(Request $request){
         }
     }
     public function orderPage(){
-    Carbon::setLocale('tr');
-
+        Carbon::setLocale('tr');
         $supply_orders=Orders::where('user_id',Auth::user()->id)->where('order_status',1)->get();
         $cargo_orders=Orders::where('user_id',Auth::user()->id)->where('order_status',2)->get();
         $delivered_orders=Orders::where('user_id',Auth::user()->id)->where('order_status',3)->get();
@@ -115,9 +121,7 @@ public function checkout(Request $request){
     }
     public function details($id){
         $status=Orders::find($id)->order_status;
-
         $orders=OrderDetails::where('order_id',$id)->get();
         return view('frontend.order-details',['orders'=>$orders,'status'=>$status]);
-        //yönlendir route yaz başarılı ise e-fatura ile ilgilen ....
     }
 }

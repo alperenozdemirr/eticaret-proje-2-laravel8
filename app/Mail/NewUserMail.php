@@ -29,6 +29,8 @@ class NewUserMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.new-user')->with('name',$this->name);
+        return $this->view('mail.new-user')
+            ->subject('Yeni Kullanıcımız')
+            ->with('name',$this->name);
     }
 }

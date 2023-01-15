@@ -1,6 +1,17 @@
 @extends('frontend.layout')
 @section('title','Sepetim('.$baskets->count().')')
 @section('content')
+    <head>
+        <style>
+            .stock-info{
+                padding:4px 12px 4px 12px;
+                position: absolute;
+                z-index: 5;
+                left:5px;top: 5px;
+                color: white;
+            }
+        </style>
+    </head>
     <main class="main">
         <nav aria-label="breadcrumb" class="breadcrumb-nav">
             <div class="container">
@@ -14,6 +25,10 @@
         <div class="page-content">
             <div class="cart">
                 <div class="container">
+                    @if($stock_out==1)
+                    <div style="text-align: center;" class="alert alert-dark col-lg-12">
+                        <span>Sepetinizde Tükenmiş ürün bulunmaktadır!<p>Tükenmiş ürünü sepetten çıkarmazsanız işleminiz başarısız olacaktır!</p></span>
+                    </div> @endif
                     <div class="row">
                         <div class="col-lg-9">
                             <table class="table table-cart table-mobile">
@@ -28,10 +43,14 @@
                                 </thead>
 
                                 <tbody>
-
                                 @foreach($baskets as $basket)
-                                <tr>
+                                <tr style="position: relative;">
+
                                     <td class="product-col">
+                                        @if($basket->products->stock==0)<div style="background-color:brown" class="stock-info">Tükendi</div>
+                                        @elseif($basket->products->stock<6 && $basket->products->stock!=0)
+                                            <div style="background-color:black" class="stock-info">Tükeniyor..</div>
+                                        @endif
                                         <div class="product">
                                             <figure class="product-media">
                                                 <a href="#">
@@ -57,7 +76,7 @@
                                                     <li class="page-item"><a class="page-link">{{$basket->product_count}}</a></li>
 
                                                     <li class="page-item">
-                                                        <a class="page-link" href="{{route('basketCountUp',$basket->id)}}" aria-label="Next">
+                                                        <a class="page-link" @if($basket->products->stock>$basket->product_count) href="{{route('basketCountUp',$basket->id)}}" @endif aria-label="Next">
                                                             <span style="color:black" aria-hidden="true">»</span>
                                                         </a>
                                                     </li>

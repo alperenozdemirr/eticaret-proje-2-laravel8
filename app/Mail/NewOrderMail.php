@@ -29,6 +29,6 @@ class NewOrderMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.new-order')->with('data',$this->data);
+        return $this->view('mail.new-order')->subject('Sipariş E-fatura')->with('data',$this->data);
     }
 }

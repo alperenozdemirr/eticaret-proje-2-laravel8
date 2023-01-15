@@ -32,6 +32,9 @@ class ConfirmationMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.confirmation-mail')->with('data',$this->data)->with('code',$this->code);
+        return $this->view('mail.confirmation-mail')
+            ->subject('Kimlik Doğrulama Kodu')
+            ->with('data',$this->data)
+            ->with('code',$this->code);
     }
 }

@@ -83,7 +83,7 @@
                                             <div class="header-menu">
                                                 <ul>
                                                     <li><a href="#">{{\Illuminate\Support\Facades\Auth::user()->name}}</a></li>
-                                                    <li><a href="#">Hesap Bilgilerim</a></li>
+                                                    <li><a href="{{route('accountPage')}}">Hesap Bilgilerim</a></li>
                                                     <li><a href="{{route('orderPage')}}">Siparişlerim</a></li>
                                                     <li><a href="{{route('user.logout')}}">Çıkış Yap</a></li>
                                                 </ul>

@@ -49,10 +49,13 @@
 
                 <div class="product-details product-details-centered product-details-separator">
                     <div class="container">
+                        @if($product->stock==0)
+                        <div class="alert alert-dark"><h6 style="color: white">Melesef ürün tükendi!</h6></div>@endif
+                            @if($product->stock<6 && $product->stock!=0)
+                                <div class="alert alert-danger"><h6 style="color: white">Acele Et Ürün Tükeniyor!</h6></div>@endif
                         <div class="row">
                             <div class="col-md-6">
                                 <h1 class="product-title">{{$product->name}}</h1><!-- End .product-title -->
-
                                 <div class="ratings-container">
                                     <div class="ratings">
                                         <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
@@ -73,10 +76,10 @@
                                 <div class="product-details-action">
                                     <div class="details-action-col">
                                         <div class="product-details-quantity">
-                                            <input type="number" id="qty" name="count" class="form-control" value="1" min="1" max="30" step="1" data-decimals="0" required="" style="display: none;"><div class="input-group  input-spinner"></div>
+                                            <input type="number" id="qty" name="count" class="form-control" value="1" min="1" max="{{$product->stock}}" step="1" data-decimals="0" required="" style="display: none;"><div class="input-group  input-spinner"></div>
                                         </div><!-- End .product-details-quantity -->
                                             <input type="hidden" name="product_id" value="{{$product->id}}">
-                                        <button type="submit" class="btn-product btn-cart"><span>Sepete Ekle</span></button>
+                                        <button type="submit" @if($product->stock==0) disabled style="background-color: brown;" @endif class="btn-product btn-cart"><span>@if($product->stock==0) Tükendi @else Sepete Ekle @endif</span></button>
                                     </div><!-- End .details-action-col -->
                                 </div><!-- End .product-details-action -->
 

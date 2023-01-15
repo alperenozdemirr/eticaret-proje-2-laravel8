@@ -5,6 +5,7 @@ use App\Http\Controllers\Frontend\DefaultController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\ShoppingCartController;
 use App\Http\Controllers\Frontend\OrderController;
+use App\Http\Controllers\Frontend\AccountController;
 //test router
 /*
 Route::get('products',[\App\Http\Controllers\TestController::class,'products']);
@@ -88,9 +89,14 @@ Route::middleware(['user'])->group(function (){
     Route::get('new-order',[OrderController::class,'newOrder'])->name('newOrder');
     Route::get('account/my-orders',[OrderController::class,'orderPage'])->name('orderPage');
     Route::get('account/my-orders/order-code{id}',[OrderController::class,'details'])->name('orderDetails','id');
+    Route::get('account',[AccountController::class,'show'])->name('accountPage');
+    Route::post('account',[AccountController::class,'update'])->name('account');
 });
 Route::get('testFun',[DefaultController::class,'testFun'])->name('testFun');
 Route::get('testMail',[DefaultController::class,'testMail'])->name('testMail');
+Route::get('test',function (){
+   return 10 + 5;
+});
 
 
 
