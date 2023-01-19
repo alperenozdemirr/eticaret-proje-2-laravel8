@@ -15,4 +15,11 @@ class Baskets extends Model
     public function images(){
         return $this->hasMany(ProductImages::class,'product_id','product_id');
     }
+    public function users(){
+        return $this->belongsTo(User::class,'user_id','id');
+    }
+    public function basketCount(){
+        return $this->hasMany(Baskets::class,'user_id');
+    }
+
 }

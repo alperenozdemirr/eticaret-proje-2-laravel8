@@ -122,6 +122,24 @@
                 </li>
                 <li>
                     <a href="javascript:;"><i class="sidebar-item-icon fa fa-bookmark"></i>
+                        <span class="nav-label">Sipariş İşlemleri</span><i class="fa fa-angle-left arrow"></i></a>
+                    <ul class="nav-2-level collapse">
+                        <li>
+                            <a href="{{route('bekci.orderList')}}">Tüm Siparişler</a>
+                        </li>
+                        <li>
+                            <a href="{{route('bekci.orderSupply')}}">Tedarik Edilen Siparişler</a>
+                        </li>
+                        <li>
+                            <a href="{{route('bekci.orderCargo')}}">Kargodaki Siparişler</a>
+                        </li>
+                        <li>
+                            <a href="{{route('bekci.orderDelivered')}}">Teslim Edilen Siparişler</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;"><i class="sidebar-item-icon fa fa-bookmark"></i>
                         <span class="nav-label">Banner İşlemleri</span><i class="fa fa-angle-left arrow"></i></a>
                     <ul class="nav-2-level collapse">
                         <li>

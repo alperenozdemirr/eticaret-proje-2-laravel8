@@ -35,10 +35,11 @@ class DefaultController extends Controller
         $email= $request->email;
         $password= $request->password;
         $type=1;
+        $status=1;
         $remember_me=$request->has('remember_me') ? true : false;
 
 
-        if (Auth::attempt(['email'=>$email,'password'=>$password,'type'=>$type],$remember_me)){
+        if (Auth::attempt(['email'=>$email,'password'=>$password,'type'=>$type,'status'=>$status],$remember_me)){
             return redirect()->intended(route('index'));
         }else{
             return back()->withInput();
@@ -70,6 +71,7 @@ class DefaultController extends Controller
             $user->email=session()->get('email');
             $user->password=bcrypt(session()->get('password'));
             $user->type=1;
+            $user->status=1;
             $user->save();
             if($user){
                 $name=session()->get('name');

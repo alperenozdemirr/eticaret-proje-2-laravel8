@@ -21,4 +21,7 @@ class Orders extends Model
     public function images(){
         return $this->hasMany(ProductImages::class,'product_id','product_id');
     }
+    public function cities(){
+        return $this->hasOne(Cities::class,'city');
+    }
 }

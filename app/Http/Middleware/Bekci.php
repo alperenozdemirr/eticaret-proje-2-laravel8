@@ -16,7 +16,7 @@ class Bekci
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!\Auth::guest() && \Auth::user()->type==5){
+        if(!\Auth::guest() && \Auth::user()->type==5 && \Auth::user()->status==1){
             return $next($request);
         }else{
             return  redirect(route('bekci.loginPage'))->with('error','Geçersiz Bilgi');

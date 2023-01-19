@@ -63,8 +63,15 @@ Route::middleware(['bekci'])->group(function (){
     Route::get('slider/delete/code00{id}',[\App\Http\Controllers\Backend\SliderController::class,'delete'])->name('bekci.sliderDelete','id');
     Route::get('slider/up/code00{id}',[\App\Http\Controllers\Backend\SliderController::class,'orderUp'])->name('bekci.sliderUp','id');
     Route::get('slider/down/code00{id}',[\App\Http\Controllers\Backend\SliderController::class,'orderDown'])->name('bekci.sliderDown','id');
+    Route::get('order/list',[\App\Http\Controllers\Backend\OrderController::class,'list'])->name('bekci.orderList');
+    Route::get('order/supply',[\App\Http\Controllers\Backend\OrderController::class,'supply'])->name('bekci.orderSupply');
+    Route::get('order/cargo',[\App\Http\Controllers\Backend\OrderController::class,'cargo'])->name('bekci.orderCargo');
+    Route::get('order/delivered',[\App\Http\Controllers\Backend\OrderController::class,'delivered'])->name('bekci.orderDelivered');
+    Route::post('order/search',[\App\Http\Controllers\Backend\OrderController::class,'search'])->name('bekci.orderSearch');
+    Route::get('order/details/code-00{id}',[\App\Http\Controllers\Backend\OrderController::class,'details'])->name('bekci.orderDetails','id');
+    Route::post('order/change-status',[\App\Http\Controllers\Backend\OrderController::class,'changeStatus'])->name('bekci.orderChangeStatus');
 
-    });
+  });
 });//bekci middleware end!
 Route::get('user/login',[DefaultController::class,'loginPage'])->name('user.loginPage');
 Route::post('user/login',[DefaultController::class,'authenticate'])->name('user.authenticate');

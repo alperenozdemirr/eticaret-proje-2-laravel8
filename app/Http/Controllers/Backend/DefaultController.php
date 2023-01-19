@@ -21,8 +21,9 @@ class DefaultController extends Controller
         $email=$request->email;
         $password=$request->password;
         $type=5;
+        $status=1;
         $remember_me=$request->has('remember_me') ? true :false;
-        if (Auth::attempt(['email'=>$email,'password'=>$password,'type'=>$type],$remember_me)){
+        if (Auth::attempt(['email'=>$email,'password'=>$password,'type'=>$type,'status'=>$status],$remember_me)){
             return redirect(route('bekci.index'))->with('login','success');
         }else{
             return back()->withInput()->with('error','Geçersiz Bilgiler Lütfen Tekrar Deneyiniz!');
