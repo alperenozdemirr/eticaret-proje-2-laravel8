@@ -1,3 +1,4 @@
+
 <table border="0" width="600" cellspacing="0" cellpadding="0" align="center">
     <tbody>
     <tr>
@@ -14,37 +15,29 @@
                 </tr>
                 <tr>
                     <td style="line-height:1;color:#3c3c3c;font-size:18px;font-weight:600;font-family:'Open Sans',Helvetica,sans-serif" align="left">
-                        <div><span>Ödeme işlemi onaylanmıştır.</span></div>
+                        <div><span>Siparişiniz Kargoya verilmiştir.</span></div>
                     </td>
                 </tr>
                 <tr>
                     <td height="25">&nbsp;</td>
                 </tr>
                 <tr>
+                    <td align="center"><img width="200" src="https://cdn-icons-png.flaticon.com/512/9457/9457484.png"></td>
+                </tr>
+                <tr>
                     <td style="line-height:1.8;color:#3c3c3c;font-size:16px;font-weight:400;font-family:'Open Sans',Helvetica,sans-serif" align="left">
-                        <div><span><strong>{{$data['time']}}</strong> tarihinde oluşturulan <strong>#{{$data['code']}}00</strong> numaralı faturanız için yaptığınız ödeme onaylanmıştır. Ödemeniz ve bizi tercih ettiğiniz için teşekkür ederiz.</span></div>
+                        <div><span><strong>{{$data['time']}}</strong> tarihinde oluşturulan <strong>#{{$data['code']}}00</strong> numaralı Siparişiniz Kargoya verilmiştir kargo takip kodu için kargo firmasından gelen mesajı bekleyiniz.
+                        	<br>Kargo ulaşım süreci 1 ila 3 gün arasıdır<br>Bu süre içinde gelmeyen kargolarınız için kargo firmasına başvurunuz lütfen.</span></div>
                     </td>
                 </tr>
                 <tr>
                     <td height="25">&nbsp;</td>
                 </tr>
-                <tr>
-                    <td align="center"><img style="display:block;line-height:0;font-size:0;border:0" src="https://ci5.googleusercontent.com/proxy/9fCkmQMDLs5RqHZr1dbEELIuxidgeyFWnjoZ_K1v1UodE_fxmm0rMmdHpYScVrIx_e28B-vRxNHm2YOiQy3234iAvZUxsQOa9jAh_L5R3TFWNOuyRuF5YVXQt3SamWmdYQ1P9QL_LrM=s0-d-e1-ft#https://www.veridyen.com/email-resources/assets/images/icons/icons8-debit-card-50.png" alt="Ödeme Yöntemi" border="0" class="CToWUd" data-bit="iit"></td>
-                </tr>
-                <tr>
-                    <td height="25">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td style="line-height:1.8;color:#3c3c3c;font-size:16px;font-weight:400;font-family:'Open Sans',Helvetica,sans-serif" align="left">
-                        <div><span> Aşağıda ödenen faturaya ait detaylı bilgiler yer almaktadır.<br><br>
-<br>
 
-------------------------------<wbr>------------------------<br>
-                                Toplam Ürün Sayısı: {{$data['totalCount']}}<br>
-Ara Toplam: {{$data['totalPrice']}}.00 TL<br>
-0% KDV: {{$data['totalPrice']}}.00 TL<br>
-Kargo Fiyatı: 0.00 TL<br>
-Toplam: {{$data['totalPrice']}} TL</span></div>
+
+                <tr>
+                    <td style="line-height:1.8;color:#3c3c3c;font-size:16px;font-weight:400;font-family:'Open Sans',Helvetica,sans-serif" align="left">
+                        <div><span> <strong>Sipariş Durumu:</strong> Kargoda.<br></span></div>
                     </td>
                 </tr>
                 <tr>
@@ -52,15 +45,7 @@ Toplam: {{$data['totalPrice']}} TL</span></div>
                 </tr>
                 <tr>
                     <td style="line-height:1.8;color:#3c3c3c;font-size:16px;font-weight:400;font-family:'Open Sans',Helvetica,sans-serif" align="left">
-                        <div><span> <strong>Tutar:</strong> {{$data['totalPrice']}} TL<br><strong>İşlem Numarası:</strong> #329350<br><strong>Toplam Ödenen Tutar:</strong> {{$data['totalPrice']}} TL<br><strong>Kalan Ödeme Tutarı:</strong> 0.00 TL<br><strong>Sipariş Durumu:</strong> Tedarik Ediliyor.<br></span></div>
-                    </td>
-                </tr>
-                <tr>
-                    <td height="25">&nbsp;</td>
-                </tr>
-                <tr>
-                    <td style="line-height:1.8;color:#3c3c3c;font-size:16px;font-weight:400;font-family:'Open Sans',Helvetica,sans-serif" align="left">
-                        <div><span>Sipariş faturanız ürünler ile birlikte olacaktır<br>İyi Günler Dileriz..</span></div>
+                        <div><span>Sipariş Faturası Ürünler ile birlikte gelecektir değişim ve iade için faturayı kullanınız.<br>İyi Günler Dilerim..</span></div>
                     </td>
                 </tr>
                 <tr>

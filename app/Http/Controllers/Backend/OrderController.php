@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\OrderCargoMailJob;
+use App\Mail\OrderCargoMail;
 use App\Models\OrderDetails;
 use App\Models\Orders;
 use App\Models\Products;
 use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -36,7 +39,6 @@ class OrderController extends Controller
         $orders=OrderDetails::where('order_id',$id)->get();
         $detail=Orders::where('id',$id)->first();
         $user=User::find($detail->user_id);
-        //mail işlemini yap
         return view('backend.order-detail',['orders'=>$orders,'user'=>$user,'detail'=>$detail]);
     }
     public function changeStatus(Request $request){
@@ -44,7 +46,16 @@ class OrderController extends Controller
         $order=Orders::find($request->id);
         $order->order_status=$value;
         $order->save();
+        $user=User::find($order->user_id);
+        $data['name']=$user->name;
+        $data['time']=$order->created_at;
+        $data['code']=$order->id;
+        $email=$user->email;
         if($order){
+            if ($value==2){
+                //mail value = name,time,code
+                dispatch(new OrderCargoMailJob($data,$email));
+            }
             return redirect(route('bekci.orderList'))->with('success','ok');
         }else{
             return back()->with('error','ok');
