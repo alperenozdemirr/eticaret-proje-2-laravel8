@@ -74,7 +74,7 @@
                     <a class="nav-link active" id="products-featured-link" data-toggle="tab" href="#products-featured-tab" role="tab" aria-controls="products-featured-tab" aria-selected="true">Yeni Ürünler</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="products-sale-link" data-toggle="tab" href="#products-sale-tab" role="tab" aria-controls="products-sale-tab" aria-selected="false">Tüm Ürünler</a>
+                    <a class="nav-link"  href="{{route('shop')}}" >Tüm Ürünler</a>
                 </li>
 
             </ul>
@@ -136,15 +136,9 @@
                         @endforeach
                     </div><!-- End .owl-carousel -->
                 </div><!-- .End .tab-pane -->
-
-
             </div><!-- End .tab-content -->
         </div><!-- End .container -->
-
         <div class="mb-7 mb-lg-11"></div><!-- End .mb-7 -->
-
-
-
         <div class="icon-boxes-container mt-2 mb-2 bg-transparent">
             <div class="container">
                 <div class="row">
@@ -155,30 +149,26 @@
                                 </span>
                             <div class="icon-box-content">
                                 <h3 class="icon-box-title">Ücretsiz Kargo</h3><!-- End .icon-box-title -->
-                                <p>50 $ veya üzeri siparişler</p>
+                                <p>1500 TL veya üzeri siparişler</p>
                             </div><!-- End .icon-box-content -->
                         </div><!-- End .icon-box -->
                     </div><!-- End .col-sm-6 col-lg-3 -->
-
                     <div class="col-sm-6 col-lg-3">
                         <div class="icon-box icon-box-side">
                                 <span class="icon-box-icon text-dark">
                                     <i class="icon-rotate-left"></i>
                                 </span>
-
                             <div class="icon-box-content">
                                 <h3 class="icon-box-title">Ücretsiz iade</h3><!-- End .icon-box-title -->
                                 <p>30 gün içinde</p>
                             </div><!-- End .icon-box-content -->
                         </div><!-- End .icon-box -->
                     </div><!-- End .col-sm-6 col-lg-3 -->
-
                     <div class="col-sm-6 col-lg-3">
                         <div class="icon-box icon-box-side">
                                 <span class="icon-box-icon text-dark">
                                     <i class="icon-info-circle"></i>
                                 </span>
-
                             <div class="icon-box-content">
                                 <h3 class="icon-box-title">1 Üründe %20 İndirim Kazanın</h3><!-- End .icon-box-title -->
                                 <p>kaydolduğunuzda</p>
@@ -202,44 +192,6 @@
             </div><!-- End .container -->
         </div><!-- End .icon-boxes-container -->
 
-        <div class="container">
-            <div class="cta cta-separator cta-border-image cta-half mb-0" style="background-image: url(assets/images/demos/demo-3/bg-2.jpg);">
-                <div class="cta-border-wrapper bg-white">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="cta-wrapper cta-text text-center">
-                                <h3 class="cta-title">Sosyal Alışveriş</h3><!-- End .cta-title -->
-                                <p class="cta-desc">Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. </p><!-- End .cta-desc -->
-
-                                <div class="social-icons social-icons-colored justify-content-center">
-                                    <a href="#" class="social-icon social-facebook" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                                    <a href="#" class="social-icon social-twitter" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-                                    <a href="#" class="social-icon social-instagram" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-                                    <a href="#" class="social-icon social-youtube" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
-                                    <a href="#" class="social-icon social-pinterest" title="Pinterest" target="_blank"><i class="icon-pinterest"></i></a>
-                                </div><!-- End .soial-icons -->
-                            </div><!-- End .cta-wrapper -->
-                        </div><!-- End .col-lg-6 -->
-
-                        <div class="col-lg-6">
-                            <div class="cta-wrapper text-center">
-                                <h3 class="cta-title">En Son Fırsatları Alın</h3><!-- End .cta-title -->
-                                <p class="cta-desc">ve <br>ilk alışveriş için 20 $ kupon kazanın</p><!-- End .cta-desc -->
-
-                                <form action="#">
-                                    <div class="input-group">
-                                        <input type="email" class="form-control" placeholder="Enter your Email Address" aria-label="Email Adress" required>
-                                        <div class="input-group-append">
-                                            <button class="btn btn-primary btn-rounded" type="submit"><i class="icon-long-arrow-right"></i></button>
-                                        </div><!-- .End .input-group-append -->
-                                    </div><!-- .End .input-group -->
-                                </form>
-                            </div><!-- End .cta-wrapper -->
-                        </div><!-- End .col-lg-6 -->
-                    </div><!-- End .row -->
-                </div><!-- End .bg-white -->
-            </div><!-- End .cta -->
-        </div><!-- End .container -->
     </main><!-- End .main -->
 @endsection
 @section('css') @endsection

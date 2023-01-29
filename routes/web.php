@@ -84,6 +84,8 @@ Route::get('user/logout',[DefaultController::class,'logout'])->name('user.logout
 Route::get('product/code00{id}',[ProductController::class,'product'])->name('single.product','id');
 Route::get('/',[DefaultController::class,'index'])->name('index');
 Route::get('shop',[ProductController::class,'shop'])->name('shop');
+Route::get('search',[ProductController::class,'search'])->name('search');
+Route::get('category/code-0{id}',[DefaultController::class,'categoryUrl'])->name('category.url','id');
 Route::middleware(['user'])->group(function (){
     Route::get('shopping-cart',[ShoppingCartController::class,'list'])->name('shoppingCart');
     Route::post('basket/add',[ShoppingCartController::class,'add'])->name('basketAdd');
@@ -99,11 +101,8 @@ Route::middleware(['user'])->group(function (){
     Route::get('account',[AccountController::class,'show'])->name('accountPage');
     Route::post('account',[AccountController::class,'update'])->name('account');
 });
-Route::get('testFun',[DefaultController::class,'testFun'])->name('testFun');
-Route::get('testMail',[DefaultController::class,'testMail'])->name('testMail');
-Route::get('test',function (){
-   return 10 + 5;
-});
+
+
 
 
 

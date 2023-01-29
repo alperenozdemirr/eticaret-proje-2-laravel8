@@ -19,7 +19,7 @@ class User
         if(!\Auth::guest() && \Auth::user()->type==1 && \Auth::user()->status==1){
             return $next($request);
         }else{
-            return  redirect(route('user.loginPage'))->with('error','Geçersiz Bilgi');
+            return  redirect(route('user.loginPage'))->with('notLogged','Geçersiz Bilgi');
         }
         return redirect(route('user.loginPage'));
     }

@@ -51,19 +51,8 @@
 
                     <ul class="top-menu">
                         <li>
-                            <a href="#">Links</a>
+                            <a href="#">TR</a>
                             <ul>
-                                <li>
-                                    <div class="header-dropdown">
-                                        <a href="#">USD</a>
-                                        <div class="header-menu">
-                                            <ul>
-                                                <li><a href="#">Eur</a></li>
-                                                <li><a href="#">Usd</a></li>
-                                            </ul>
-                                        </div><!-- End .header-menu -->
-                                    </div>
-                                </li>
                                 <li>
                                     <div class="header-dropdown">
                                         <a href="#">TR</a>
@@ -76,7 +65,7 @@
                                         </div><!-- End .header-menu -->
                                     </div>
                                 </li>
-                                @if(\Illuminate\Support\Facades\Auth::user())
+                                @auth
                                     <li>
                                         <div class="header-dropdown">
                                             <a href="#">Hesabım</a>
@@ -90,9 +79,9 @@
                                             </div><!-- End .header-menu -->
                                         </div>
                                     </li>
-                                    @else
+                                @elseguest
                                     <li><a href="{{route('user.loginPage')}}" >Giriş Yap | Üye Ol</a></li>
-                                @endif
+                                @endauth
                             </ul>
                         </li>
                     </ul><!-- End .top-menu -->
@@ -117,11 +106,11 @@
                 <div class="header-center">
                     <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
                         <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                        <form action="#" method="get">
+                        <form action="{{route('search')}}" method="GET">
                             <div class="header-search-wrapper search-wrapper-wide">
-                                <label for="q" class="sr-only">Search</label>
+                                <label  class="sr-only">Search</label>
                                 <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                                <input type="search" class="form-control" name="q" id="q" placeholder="Ara ürün,kategori.." required>
+                                <input type="search" class="form-control" name="search" id="q" placeholder="Ara ürün,kategori.." required>
                             </div><!-- End .header-search-wrapper -->
                         </form>
                     </div><!-- End .header-search -->
@@ -179,8 +168,7 @@
                                 <ul>
                                     @foreach($data['categories'] as $category)
                                     <li>
-                                        <a href="about.html" class="sf-with-ul">{{$category->name}}</a>
-
+                                        <a href="{{route('category.url',$category->id)}}" class="sf-with-ul">{{$category->name}}</a>
                                         <ul>
                                             @foreach($category->categories as $childCategory)
                                                 @include("frontend.default.child_category",['child_category'=>$childCategory])
@@ -202,8 +190,19 @@
             </div><!-- End .container -->
         </div><!-- End .header-bottom -->
     </header><!-- End .header -->
-
-    @yield('content')
+    @if(session('null'))
+    <div class="alert alert-warning col-lg-12" style="text-align: center">Bu istekte bir sonuç bulunamadı(0)!</div>
+    @endif
+    @if(session('error'))
+        <div class="alert alert-danger col-lg-12" style="text-align: center">İşleminizde bir problem oluştu!</div>
+    @endif
+    @if(session('alert'))
+        <div class="alert alert-warning col-lg-12" style="text-align: center">İşleminizi kontrol ediniz eksil bilgi veya yanlışlık var!</div>
+    @endif
+    @if(session('notLogged'))
+        <div class="alert alert-warning col-lg-12" style="text-align: center">İşlemi gerçekleştirebilmek için giriş yapmak gerekiyor!</div>
+    @endif
+        @yield('content')
 
 
     <footer class="footer">
@@ -213,7 +212,7 @@
                     <div class="col-sm-6 col-lg-3">
                         <div class="widget widget-about">
                             <img src="{{asset('frontend')}}/assets/images/demos/demo-3/logo-footer.png" class="footer-logo" alt="Footer Logo" width="105" height="25">
-                            <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p>
+                            <p>Electronik ürünler Telefon Tablet bilgisayar ürünlerine kadar taksitsiz geri iadeli ürün garantili Ve güvenli Hızlı Hizmet sunmaktayız.</p>
 
                             <div class="widget-call">
                                 <i class="icon-phone"></i>
@@ -225,29 +224,25 @@
 
                     <div class="col-sm-6 col-lg-3">
                         <div class="widget">
-                            <h4 class="widget-title">Useful Links</h4><!-- End .widget-title -->
+                            <h4 class="widget-title">Ana Kategoriler</h4><!-- End .widget-title -->
 
                             <ul class="widget-list">
-                                <li><a href="about.html">About Molla</a></li>
-                                <li><a href="#">Our Services</a></li>
-                                <li><a href="#">How to shop on Molla</a></li>
-                                <li><a href="faq.html">FAQ</a></li>
-                                <li><a href="contact.html">Contact us</a></li>
+                                @foreach($data['categories'] as $category)
+                                    <li><a href="#">{{$category->name}}</a></li>
+                                @endforeach
                             </ul><!-- End .widget-list -->
                         </div><!-- End .widget -->
                     </div><!-- End .col-sm-6 col-lg-3 -->
 
                     <div class="col-sm-6 col-lg-3">
                         <div class="widget">
-                            <h4 class="widget-title">Customer Service</h4><!-- End .widget-title -->
+                            <h4 class="widget-title">Müşteri Servisi</h4><!-- End .widget-title -->
 
                             <ul class="widget-list">
-                                <li><a href="#">Payment Methods</a></li>
-                                <li><a href="#">Money-back guarantee!</a></li>
-                                <li><a href="#">Returns</a></li>
-                                <li><a href="#">Shipping</a></li>
-                                <li><a href="#">Terms and conditions</a></li>
-                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">Ödeme Metodları</a></li>
+                                <li><a href="#">Nakliye</a></li>
+                                <li><a href="#">Şartlar ve Koşullar</a></li>
+                                <li><a href="#">Gizlilik Politikası</a></li>
                             </ul><!-- End .widget-list -->
                         </div><!-- End .widget -->
                     </div><!-- End .col-sm-6 col-lg-3 -->
@@ -257,11 +252,11 @@
                             <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
 
                             <ul class="widget-list">
-                                <li><a href="#">Sign In</a></li>
-                                <li><a href="cart.html">View Cart</a></li>
-                                <li><a href="#">My Wishlist</a></li>
-                                <li><a href="#">Track My Order</a></li>
-                                <li><a href="#">Help</a></li>
+                                <li><a href="{{route('user.loginPage')}}">Giriş Yap</a></li>
+                                <li><a href="{{route('user.registerPage')}}">Kayıt ol</a></li>
+                                <li><a href="{{route('accountPage')}}">Hesabım</a></li>
+                                <li><a href="{{route('orderPage')}}">Sipaişlerim</a></li>
+                                <li><a href="{{route('shoppingCart')}}">Sepetim</a></li>
                             </ul><!-- End .widget-list -->
                         </div><!-- End .widget -->
                     </div><!-- End .col-sm-6 col-lg-3 -->
@@ -271,7 +266,7 @@
 
         <div class="footer-bottom">
             <div class="container">
-                <p class="footer-copyright">Copyright © 2019 Molla Store. All Rights Reserved.</p><!-- End .footer-copyright -->
+                <p class="footer-copyright">Copyright © 2023 ÖZDEMİR SOFTWARE</p><!-- End .footer-copyright -->
                 <figure class="footer-payments">
                     <img src="{{asset('frontend')}}/assets/images/payments.png" alt="Payment methods" width="272" height="20">
                 </figure><!-- End .footer-payments -->
@@ -288,9 +283,9 @@
     <div class="mobile-menu-wrapper">
         <span class="mobile-menu-close"><i class="icon-close"></i></span>
 
-        <form action="#" method="get" class="mobile-search">
+        <form action="{{route('search')}}" method="GET" class="mobile-search">
             <label for="mobile-search" class="sr-only">Search</label>
-            <input type="search" class="form-control" name="mobile-search" id="mobile-search" placeholder="Search in..." required>
+            <input type="search" class="form-control" name="search" id="mobile-search" placeholder="Ara Ürün ismi.." required>
             <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
         </form>
 
@@ -298,180 +293,50 @@
             <li class="nav-item">
                 <a class="nav-link active" id="mobile-menu-link" data-toggle="tab" href="#mobile-menu-tab" role="tab" aria-controls="mobile-menu-tab" aria-selected="true">Menu</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="mobile-cats-link" data-toggle="tab" href="#mobile-cats-tab" role="tab" aria-controls="mobile-cats-tab" aria-selected="false">Categories</a>
-            </li>
         </ul>
 
         <div class="tab-content">
             <div class="tab-pane fade show active" id="mobile-menu-tab" role="tabpanel" aria-labelledby="mobile-menu-link">
                 <nav class="mobile-nav">
                     <ul class="mobile-menu">
+                        @auth
+                        <li><a href="#">{{\Illuminate\Support\Facades\Auth::user()->name}}</a></li>
+                        @endauth
                         <li class="active">
-                            <a href="index.html">Home</a>
+                            <a href="{{route('index')}}">Anasayfa</a>
+                        </li>
+                            <li>
+                                <a href="{{route('shop')}}">Ürünler</a>
+                            </li>
+                            <li><a href="" >Tüm Kategoriler</a>
+                                <ul>
+                                    @foreach($data['categories'] as $category)
+                                        <li>
+                                            <a href="{{route('category.url',$category->id)}}" class="sf-with-ul">{{$category->name}}</a>
+                                            <ul>
+                                                @foreach($category->categories as $childCategory)
+                                                    @include("frontend.default.child_category",['child_category'=>$childCategory])
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="{{route('shoppingCart')}}">Sepetim({{\App\Http\Controllers\Frontend\DefaultController::basketCount()}})</a>
+                            </li>
+                            @auth
+                                    <li><a href="{{route('accountPage')}}">Hesap Bilgilerim</a></li>
+                                    <li><a href="{{route('orderPage')}}">Siparişlerim</a></li>
+                                    <li><a href="{{route('user.logout')}}">Çıkış Yap</a></li>
+                            @elseguest
+                            <li><a href="{{route('user.loginPage')}}" >Giriş Yap | Üye Ol</a></li>
+                                @endauth
 
-                            <ul>
-                                <li><a href="index-1.html">01 - furniture store</a></li>
-                                <li><a href="index-2.html">02 - furniture store</a></li>
-                                <li><a href="index-3.html">03 - electronic store</a></li>
-                                <li><a href="index-4.html">04 - electronic store</a></li>
-                                <li><a href="index-5.html">05 - fashion store</a></li>
-                                <li><a href="index-6.html">06 - fashion store</a></li>
-                                <li><a href="index-7.html">07 - fashion store</a></li>
-                                <li><a href="index-8.html">08 - fashion store</a></li>
-                                <li><a href="index-9.html">09 - fashion store</a></li>
-                                <li><a href="index-10.html">10 - shoes store</a></li>
-                                <li><a href="index-11.html">11 - furniture simple store</a></li>
-                                <li><a href="index-12.html">12 - fashion simple store</a></li>
-                                <li><a href="index-13.html">13 - market</a></li>
-                                <li><a href="index-14.html">14 - market fullwidth</a></li>
-                                <li><a href="index-15.html">15 - lookbook 1</a></li>
-                                <li><a href="index-16.html">16 - lookbook 2</a></li>
-                                <li><a href="index-17.html">17 - fashion store</a></li>
-                                <li><a href="index-18.html">18 - fashion store (with sidebar)</a></li>
-                                <li><a href="index-19.html">19 - games store</a></li>
-                                <li><a href="index-20.html">20 - book store</a></li>
-                                <li><a href="index-21.html">21 - sport store</a></li>
-                                <li><a href="index-22.html">22 - tools store</a></li>
-                                <li><a href="index-23.html">23 - fashion left navigation store</a></li>
-                                <li><a href="index-24.html">24 - extreme sport store</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="category.html">Shop</a>
-                            <ul>
-                                <li><a href="category-list.html">Shop List</a></li>
-                                <li><a href="category-2cols.html">Shop Grid 2 Columns</a></li>
-                                <li><a href="category.html">Shop Grid 3 Columns</a></li>
-                                <li><a href="category-4cols.html">Shop Grid 4 Columns</a></li>
-                                <li><a href="category-boxed.html"><span>Shop Boxed No Sidebar<span class="tip tip-hot">Hot</span></span></a></li>
-                                <li><a href="category-fullwidth.html">Shop Fullwidth No Sidebar</a></li>
-                                <li><a href="product-category-boxed.html">Product Category Boxed</a></li>
-                                <li><a href="product-category-fullwidth.html"><span>Product Category Fullwidth<span class="tip tip-new">New</span></span></a></li>
-                                <li><a href="cart.html">Cart</a></li>
-                                <li><a href="checkout.html">Checkout</a></li>
-                                <li><a href="wishlist.html">Wishlist</a></li>
-                                <li><a href="#">Lookbook</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="product.html" class="sf-with-ul">Product</a>
-                            <ul>
-                                <li><a href="product.html">Default</a></li>
-                                <li><a href="product-centered.html">Centered</a></li>
-                                <li><a href="product-extended.html"><span>Extended Info<span class="tip tip-new">New</span></span></a></li>
-                                <li><a href="product-gallery.html">Gallery</a></li>
-                                <li><a href="product-sticky.html">Sticky Info</a></li>
-                                <li><a href="product-sidebar.html">Boxed With Sidebar</a></li>
-                                <li><a href="product-fullwidth.html">Full Width</a></li>
-                                <li><a href="product-masonry.html">Masonry Sticky Info</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">Pages</a>
-                            <ul>
-                                <li>
-                                    <a href="about.html">About</a>
-
-                                    <ul>
-                                        <li><a href="about.html">About 01</a></li>
-                                        <li><a href="about-2.html">About 02</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="contact.html">Contact</a>
-
-                                    <ul>
-                                        <li><a href="contact.html">Contact 01</a></li>
-                                        <li><a href="contact-2.html">Contact 02</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="faq.html">FAQs</a></li>
-                                <li><a href="404.html">Error 404</a></li>
-                                <li><a href="coming-soon.html">Coming Soon</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="blog.html">Blog</a>
-
-                            <ul>
-                                <li><a href="blog.html">Classic</a></li>
-                                <li><a href="blog-listing.html">Listing</a></li>
-                                <li>
-                                    <a href="#">Grid</a>
-                                    <ul>
-                                        <li><a href="blog-grid-2cols.html">Grid 2 columns</a></li>
-                                        <li><a href="blog-grid-3cols.html">Grid 3 columns</a></li>
-                                        <li><a href="blog-grid-4cols.html">Grid 4 columns</a></li>
-                                        <li><a href="blog-grid-sidebar.html">Grid sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Masonry</a>
-                                    <ul>
-                                        <li><a href="blog-masonry-2cols.html">Masonry 2 columns</a></li>
-                                        <li><a href="blog-masonry-3cols.html">Masonry 3 columns</a></li>
-                                        <li><a href="blog-masonry-4cols.html">Masonry 4 columns</a></li>
-                                        <li><a href="blog-masonry-sidebar.html">Masonry sidebar</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Mask</a>
-                                    <ul>
-                                        <li><a href="blog-mask-grid.html">Blog mask grid</a></li>
-                                        <li><a href="blog-mask-masonry.html">Blog mask masonry</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="#">Single Post</a>
-                                    <ul>
-                                        <li><a href="single.html">Default with sidebar</a></li>
-                                        <li><a href="single-fullwidth.html">Fullwidth no sidebar</a></li>
-                                        <li><a href="single-fullwidth-sidebar.html">Fullwidth with sidebar</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="elements-list.html">Elements</a>
-                            <ul>
-                                <li><a href="elements-products.html">Products</a></li>
-                                <li><a href="elements-typography.html">Typography</a></li>
-                                <li><a href="elements-titles.html">Titles</a></li>
-                                <li><a href="elements-banners.html">Banners</a></li>
-                                <li><a href="elements-product-category.html">Product Category</a></li>
-                                <li><a href="elements-video-banners.html">Video Banners</a></li>
-                                <li><a href="elements-buttons.html">Buttons</a></li>
-                                <li><a href="elements-accordions.html">Accordions</a></li>
-                                <li><a href="elements-tabs.html">Tabs</a></li>
-                                <li><a href="elements-testimonials.html">Testimonials</a></li>
-                                <li><a href="elements-blog-posts.html">Blog Posts</a></li>
-                                <li><a href="elements-portfolio.html">Portfolio</a></li>
-                                <li><a href="elements-cta.html">Call to Action</a></li>
-                                <li><a href="elements-icon-boxes.html">Icon Boxes</a></li>
-                            </ul>
-                        </li>
                     </ul>
                 </nav><!-- End .mobile-nav -->
             </div><!-- .End .tab-pane -->
-            <div class="tab-pane fade" id="mobile-cats-tab" role="tabpanel" aria-labelledby="mobile-cats-link">
-                <nav class="mobile-cats-nav">
-                    <ul class="mobile-cats-menu">
-                        <li><a class="mobile-cats-lead" href="#">Daily offers</a></li>
-                        <li><a class="mobile-cats-lead" href="#">Gift Ideas</a></li>
-                        <li><a href="#">Beds</a></li>
-                        <li><a href="#">Lighting</a></li>
-                        <li><a href="#">Sofas & Sleeper sofas</a></li>
-                        <li><a href="#">Storage</a></li>
-                        <li><a href="#">Armchairs & Chaises</a></li>
-                        <li><a href="#">Decoration </a></li>
-                        <li><a href="#">Kitchen Cabinets</a></li>
-                        <li><a href="#">Coffee & Tables</a></li>
-                        <li><a href="#">Outdoor Furniture </a></li>
-                    </ul><!-- End .mobile-cats-menu -->
-                </nav><!-- End .mobile-cats-nav -->
-            </div><!-- .End .tab-pane -->
+
         </div><!-- End .tab-content -->
 
         <div class="social-icons">

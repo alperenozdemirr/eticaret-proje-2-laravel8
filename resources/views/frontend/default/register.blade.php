@@ -28,32 +28,32 @@
                 </div>
             </div>
             <div style="text-align: center" class="col-md-12">
-                <a href="{{route('user.registerPage')}}">Giriş Yap</a>
+                <a href="{{route('user.loginPage')}}">Giriş Yap</a>
             </div>
         </div>
 
     </div></form>
-    <script>
-            var password=document.getElementById("password");
-            var tryPassword=document.getElementById("tryPassword");
-            var passLength=document.getElementById("passwordLength");
-            var tryPassLength=document.getElementById("tryPasswordLength");
-            passLength.innerHTML="0";
-            tryPassLength.innerHTML="0";
-            password.addEventListener('keyup', (event) => {
-                passLength.innerHTML=""+password.value.length;
-            })
-            tryPassword.addEventListener('keyup', (event) => {
-                tryPassLength.innerHTML=""+tryPassword.value.length;
-                if(tryPassword.value==password.value){
-                    tryPassword.style.borderColor="#43aa69";
-                    password.style.borderColor="#43aa69";
-                }else {
-                    tryPassword.style.borderColor="red";
-                    password.style.borderColor="red";
-                }
-            })
-    </script>
+        <script>
+                var password=document.getElementById("password");
+                var tryPassword=document.getElementById("tryPassword");
+                var passLength=document.getElementById("passwordLength");
+                var tryPassLength=document.getElementById("tryPasswordLength");
+                passLength.innerHTML="0";
+                tryPassLength.innerHTML="0";
+                password.addEventListener('keyup', (event) => {
+                    passLength.innerHTML=""+password.value.length;
+                })
+                tryPassword.addEventListener('keyup', (event) => {
+                    tryPassLength.innerHTML=""+tryPassword.value.length;
+                    if(tryPassword.value==password.value && tryPassword.value>=8){
+                        tryPassword.style.borderColor="#43aa69";
+                        password.style.borderColor="#43aa69";
+                    }else {
+                        tryPassword.style.borderColor="red";
+                        password.style.borderColor="red";
+                    }
+                })
+        </script>
 @endsection
 @section('css') @endsection
 @section('js')@endsection

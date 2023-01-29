@@ -37,8 +37,6 @@ class DefaultController extends Controller
         $type=1;
         $status=1;
         $remember_me=$request->has('remember_me') ? true : false;
-
-
         if (Auth::attempt(['email'=>$email,'password'=>$password,'type'=>$type,'status'=>$status],$remember_me)){
             return redirect()->intended(route('index'));
         }else{
@@ -108,5 +106,15 @@ class DefaultController extends Controller
             $count=0;
         }
         return $count;
+    }
+    public function categoryUrl($id){
+            $products=Products::where('category',$id)->paginate(9);
+            $activeCheck[]=null;
+            if($products->count()!=0){
+                return view('frontend.shop',['products'=>$products,'activeCheck'=>$activeCheck]);
+            }else{
+                return back()->with('null','ok');
+            }
+
     }
 }

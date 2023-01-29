@@ -21,4 +21,9 @@ class TestController extends Controller
         $categories=Category::whereNull('category_id')->with('childrenCategories')->get();
         return view('index')->with(compact('categories'));
     }
+    public function test(){
+        $dizi=[21,35];
+        $products=Products::whereIn('category',$dizi)->get('name','category');
+        return $products;
+    }
 }

@@ -21,72 +21,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-9">
-                        <div class="toolbox">
-                            <div class="toolbox-left">
-                                <div class="toolbox-info">
-                                    Showing <span>9 of 56</span> Products
-                                </div><!-- End .toolbox-info -->
-                            </div><!-- End .toolbox-left -->
-
-                            <div class="toolbox-right">
-                                <div class="toolbox-sort">
-                                    <label for="sortby">Sort by:</label>
-                                    <div class="select-custom">
-                                        <select name="sortby" id="sortby" class="form-control">
-                                            <option value="popularity" selected="selected">Most Popular</option>
-                                            <option value="rating">Most Rated</option>
-                                            <option value="date">Date</option>
-                                        </select>
-                                    </div>
-                                </div><!-- End .toolbox-sort -->
-                                <div class="toolbox-layout">
-                                    <a href="category-list.html" class="btn-layout">
-                                        <svg width="16" height="10">
-                                            <rect x="0" y="0" width="4" height="4"></rect>
-                                            <rect x="6" y="0" width="10" height="4"></rect>
-                                            <rect x="0" y="6" width="4" height="4"></rect>
-                                            <rect x="6" y="6" width="10" height="4"></rect>
-                                        </svg>
-                                    </a>
-
-                                    <a href="category-2cols.html" class="btn-layout">
-                                        <svg width="10" height="10">
-                                            <rect x="0" y="0" width="4" height="4"></rect>
-                                            <rect x="6" y="0" width="4" height="4"></rect>
-                                            <rect x="0" y="6" width="4" height="4"></rect>
-                                            <rect x="6" y="6" width="4" height="4"></rect>
-                                        </svg>
-                                    </a>
-
-                                    <a href="category.html" class="btn-layout active">
-                                        <svg width="16" height="10">
-                                            <rect x="0" y="0" width="4" height="4"></rect>
-                                            <rect x="6" y="0" width="4" height="4"></rect>
-                                            <rect x="12" y="0" width="4" height="4"></rect>
-                                            <rect x="0" y="6" width="4" height="4"></rect>
-                                            <rect x="6" y="6" width="4" height="4"></rect>
-                                            <rect x="12" y="6" width="4" height="4"></rect>
-                                        </svg>
-                                    </a>
-
-                                    <a href="category-4cols.html" class="btn-layout">
-                                        <svg width="22" height="10">
-                                            <rect x="0" y="0" width="4" height="4"></rect>
-                                            <rect x="6" y="0" width="4" height="4"></rect>
-                                            <rect x="12" y="0" width="4" height="4"></rect>
-                                            <rect x="18" y="0" width="4" height="4"></rect>
-                                            <rect x="0" y="6" width="4" height="4"></rect>
-                                            <rect x="6" y="6" width="4" height="4"></rect>
-                                            <rect x="12" y="6" width="4" height="4"></rect>
-                                            <rect x="18" y="6" width="4" height="4"></rect>
-                                        </svg>
-                                    </a>
-                                </div><!-- End .toolbox-layout -->
-                            </div><!-- End .toolbox-right -->
-                        </div><!-- End .toolbox -->
-
+                        @if(isset($search))
+                        <div class="alert alert-dark col-md-12 mt-2 mb-4" >
+                            <p style="color: white;text-align: center">Ürünler İçerisinde "<span style=""><u>{{$search}}</u></span>" Cümlesi Bulunan ({{$count}}) Adet Ürün Bulundu</p>
+                        </div>@endif
                         <div class="products mb-3">
                             <div class="row justify-content-center">
+
                                 @foreach($products as $product)
                                 <div class="col-6 col-md-4 col-lg-4">
                                     <div class="product product-7 text-center">
@@ -125,28 +66,15 @@
 
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center">
-                                <li class="page-item disabled">
-                                    <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
-                                        <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
-                                    </a>
-                                </li>
-                                <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item-total">of 6</li>
-                                <li class="page-item">
-                                    <a class="page-link page-link-next" href="#" aria-label="Next">
-                                        Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
-                                    </a>
-                                </li>
+                                {{$products->links()}}
                             </ul>
                         </nav>
                     </div><!-- End .col-lg-9 -->
                     <aside class="col-lg-3 order-lg-first">
                         <div class="sidebar sidebar-shop">
                             <div class="widget widget-clean">
-                                <label>Filters:</label>
-                                <a href="#" class="sidebar-filter-clear">Clean All</a>
+                                <label>Filtrele:</label>
+                                <a href="#clearfilter" class="sidebar-filter-clear">Filtreyi Temizle</a>
                             </div><!-- End .widget widget-clean -->
 
                             <div class="widget widget-collapsible">
@@ -155,20 +83,21 @@
                                         Tüm Kategoriler
                                     </a>
                                 </h3><!-- End .widget-title -->
-                                <form method="GET" action="">
+                                <form method="GET" action="{{route('shop')}}">
 
                                 <div class="collapse show" id="" style="overflow-y: auto;height: 300px">
 
                                     <div class="widget-body">
-
-                                        @php $categoryIndex=0; @endphp
                                         @foreach($data['categories_all'] as $category)
 
                                         <div class="filter-items filter-items-count">
                                             <div class="filter-item">
                                                 <div class="custom-control custom-checkbox">
-                                                    <input  name="category[]" @if($category->products->count()==0) disabled @endif  type="checkbox"  value="{{$category->id}}"
-                                                            @php if(request()->get('category')[$categoryIndex]==$category->id){echo "checked"; $categoryIndex++;}  @endphp
+                                                    <input  name="category[]" @if($category->products->count()==0) disabled  @endif  type="checkbox"  value="{{$category->id}}"
+                                                            @foreach($activeCheck as $active)
+                                                            @if($category->id==$active) checked   @endif
+                                                            @break($category->id==$active)
+                                                            @endforeach
                                                             class="custom-control-input" id="cat-{{$loop->iteration}}">
                                                     <label class="custom-control-label" for="cat-{{$loop->iteration}}">{{$category->name}}</label>
                                                 </div><!-- End .custom-checkbox -->
@@ -180,7 +109,10 @@
 
                                     </div><!-- End .widget-body -->
                                 </div><!-- End .collapse -->
-                                    <div class="col-md-12"><div class="row"> <div class="form-group col-md-6 mt-1"><input class="form-control" placeholder="min" name="min" type="number"></div><div class="form-group col-md-6 mt-1"><input class="form-control" name="max" placeholder="max" type="number"></div></div> </div>
+                                    <div class="col-md-12"><div class="row">
+                                            <div class="form-group col-md-6 mt-1"><input class="form-control" @if(request()->get('min')) value="{{request()->get('min')}}" @endif placeholder="min" name="min" type="number"></div>
+                                            <div class="form-group col-md-6 mt-1"><input class="form-control" @if(request()->get('max')) value="{{request()->get('max')}}" @endif name="max" placeholder="max" type="number"></div>
+                                        </div> </div>
                                 <button type="submit" class="btn btn-outline-dark mt-1 col-md-12">Filtrele</button>
                                 </form>
                             </div><!-- End .widget -->
