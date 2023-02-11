@@ -38,9 +38,9 @@ class DefaultController extends Controller
         $status=1;
         $remember_me=$request->has('remember_me') ? true : false;
         if (Auth::attempt(['email'=>$email,'password'=>$password,'type'=>$type,'status'=>$status],$remember_me)){
-            return redirect()->intended(route('index'));
+            return redirect()->intended(route('index'))->with('authenticate',Auth::user()->name);
         }else{
-            return back()->withInput();
+            return back()->withInput()->with('alert','ok');
         }
     }
     public function cacheRegister(Request $request){

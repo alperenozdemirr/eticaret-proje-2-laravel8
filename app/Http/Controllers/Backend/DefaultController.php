@@ -3,13 +3,23 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Baskets;
+use App\Models\Orders;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class DefaultController extends Controller
 {
     public function index(){
-        return view('backend.default.index');
+        $date=Carbon::today()->subDays(30);
+        $totalOrder=Orders::where('order_status',1)->count();
+        $basketCount=Baskets::groupBy('user_id')->count();
+        $totalPrice=Orders::where('created_at','>=',$date)->sum('total_price');
+        $totalUser=User::all()->count();
+        return view('backend.default.index',
+                ['totalOrder'=>$totalOrder,'basketCount'=>$basketCount,'totalPrice'=>$totalPrice,'totalUser'=>$totalUser]);
     }
     public function loginPage(){
         return view('backend.default.login');

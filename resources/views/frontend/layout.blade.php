@@ -1,8 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
-<!-- molla/index-3.html  22 Nov 2019 09:55:42 GMT -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -72,6 +69,7 @@
                                             <div class="header-menu">
                                                 <ul>
                                                     <li><a href="#">{{\Illuminate\Support\Facades\Auth::user()->name}}</a></li>
+                                                    <li><a href="{{route('profilePage')}}">Profil Ayarlarım</a></li>
                                                     <li><a href="{{route('accountPage')}}">Hesap Bilgilerim</a></li>
                                                     <li><a href="{{route('orderPage')}}">Siparişlerim</a></li>
                                                     <li><a href="{{route('user.logout')}}">Çıkış Yap</a></li>
@@ -110,17 +108,27 @@
                             <div class="header-search-wrapper search-wrapper-wide">
                                 <label  class="sr-only">Search</label>
                                 <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                                <input type="search" class="form-control" name="search" id="q" placeholder="Ara ürün,kategori.." required>
+                                <input type="search" class="form-control" name="search" id="q" placeholder="Ara ürün ismi.." required>
                             </div><!-- End .header-search-wrapper -->
                         </form>
                     </div><!-- End .header-search -->
                 </div>
 
                 <div class="header-right">
-
-
-
-
+                    @auth
+                    <div class="wishlist">
+                        <a href="{{route('profilePage')}}" title="Wishlist">
+                            <div class="icon">
+                                @if(\Illuminate\Support\Facades\Auth::user()->image==null)
+                                    <img width="28px" src="{{asset('public_directory')}}/icon/user.png" class="rounded-circle" alt="profile photo">
+                                @else
+                                    <img width="28px" src="{{asset('public_directory')}}/image/users/{{\Illuminate\Support\Facades\Auth::user()->image}}" class="rounded-circle" alt="profile photo">
+                                @endif
+                            </div>
+                            <p>Profil</p>
+                        </a>
+                    </div>
+                    @endauth
                     <div class="dropdown cart-dropdown">
                         <a href="{{route('shoppingCart')}}" class="dropdown-toggle" >
                             <div class="icon">
@@ -193,14 +201,20 @@
     @if(session('null'))
     <div class="alert alert-warning col-lg-12" style="text-align: center">Bu istekte bir sonuç bulunamadı(0)!</div>
     @endif
+    @if(session('success'))
+        <div class="alert alert-success col-lg-12" style="text-align: center">İşleminiz Başarı ile gerçekleşti</div>
+    @endif
     @if(session('error'))
         <div class="alert alert-danger col-lg-12" style="text-align: center">İşleminizde bir problem oluştu!</div>
     @endif
     @if(session('alert'))
-        <div class="alert alert-warning col-lg-12" style="text-align: center">İşleminizi kontrol ediniz eksil bilgi veya yanlışlık var!</div>
+        <div class="alert alert-warning col-lg-12" style="text-align: center">İşleminizi kontrol ediniz eksik bilgi veya yanlışlık var!</div>
     @endif
     @if(session('notLogged'))
         <div class="alert alert-warning col-lg-12" style="text-align: center">İşlemi gerçekleştirebilmek için giriş yapmak gerekiyor!</div>
+    @endif
+    @if(session('authenticate'))
+        <div class="alert alert-dark col-lg-12" style="text-align: center">Hoşgeldin {{session('authenticate')}}</div>
     @endif
         @yield('content')
 
@@ -249,12 +263,12 @@
 
                     <div class="col-sm-6 col-lg-3">
                         <div class="widget">
-                            <h4 class="widget-title">My Account</h4><!-- End .widget-title -->
+                            <h4 class="widget-title">Hesabım</h4><!-- End .widget-title -->
 
                             <ul class="widget-list">
                                 <li><a href="{{route('user.loginPage')}}">Giriş Yap</a></li>
                                 <li><a href="{{route('user.registerPage')}}">Kayıt ol</a></li>
-                                <li><a href="{{route('accountPage')}}">Hesabım</a></li>
+                                <li><a href="{{route('accountPage')}}">Hesap Bilgilerim</a></li>
                                 <li><a href="{{route('orderPage')}}">Sipaişlerim</a></li>
                                 <li><a href="{{route('shoppingCart')}}">Sepetim</a></li>
                             </ul><!-- End .widget-list -->

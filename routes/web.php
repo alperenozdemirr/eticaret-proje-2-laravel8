@@ -6,6 +6,7 @@ use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\ShoppingCartController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\AccountController;
+use App\Http\Controllers\Frontend\ProfileController;
 //test router
 /*
 Route::get('products',[\App\Http\Controllers\TestController::class,'products']);
@@ -70,7 +71,9 @@ Route::middleware(['bekci'])->group(function (){
     Route::post('order/search',[\App\Http\Controllers\Backend\OrderController::class,'search'])->name('bekci.orderSearch');
     Route::get('order/details/code-00{id}',[\App\Http\Controllers\Backend\OrderController::class,'details'])->name('bekci.orderDetails','id');
     Route::post('order/change-status',[\App\Http\Controllers\Backend\OrderController::class,'changeStatus'])->name('bekci.orderChangeStatus');
-
+    Route::get('my/profile',[\App\Http\Controllers\Backend\ProfileController::class,'show'])->name('bekci.profilePage');
+    Route::post('my/profile',[\App\Http\Controllers\Backend\ProfileController::class,'changeImage'])->name('bekci.imageChange');
+    Route::post('my/password',[\App\Http\Controllers\Backend\ProfileController::class,'changePassword'])->name('bekci.passwordChange');
   });
 });//bekci middleware end!
 Route::get('user/login',[DefaultController::class,'loginPage'])->name('user.loginPage');
@@ -100,6 +103,9 @@ Route::middleware(['user'])->group(function (){
     Route::get('account/my-orders/order-code{id}',[OrderController::class,'details'])->name('orderDetails','id');
     Route::get('account',[AccountController::class,'show'])->name('accountPage');
     Route::post('account',[AccountController::class,'update'])->name('account');
+    Route::get('my/profile',[ProfileController::class,'show'])->name('profilePage');
+    Route::post('my/password',[ProfileController::class,'changePassword'])->name('passwordChange');
+    Route::post('my/image',[ProfileController::class,'changeImage'])->name('imageChange');
 });
 
 

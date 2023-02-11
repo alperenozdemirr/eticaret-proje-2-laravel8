@@ -8,16 +8,13 @@
                     @if($user->image==null)
                     <img class="img-circle" src="{{asset('public_directory')}}/icon/user.png">
                         @else
-                        <img class="img-circle" src="{{asset('public_directory')}}/image/user/{{$user->image}}">
+                        <img class="img-circle" src="{{asset('public_directory')}}/image/users/{{$user->image}}">
                     @endif
                 </div>
                 <h5 class="font-strong m-b-10 m-t-10">{{$user->name}}</h5>
                 <div class="m-b-20 text-muted"><b>@if($user->type==1)KULLANICI @elseif($user->type==5)YÖNETİCİ @endif</b></div>
-
             </div>
         </div>
-
-
     </div>
     <div class="row">
     <div class="col-md-6">

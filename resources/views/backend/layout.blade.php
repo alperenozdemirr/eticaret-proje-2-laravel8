@@ -31,10 +31,10 @@
     <header class="header">
         <div class="page-brand">
             <a class="link" href="index.html">
-                    <span class="brand">Admin
-                        <span class="brand-tip">CAST</span>
+                    <span class="brand">Özdemir
+                        <span class="brand-tip">Software</span>
                     </span>
-                <span class="brand-mini">AC</span>
+                <span class="brand-mini">Soft</span>
             </a>
         </div>
         <div class="flexbox flex-1">
@@ -43,14 +43,7 @@
                 <li>
                     <a class="nav-link sidebar-toggler js-sidebar-toggler"><i class="ti-menu"></i></a>
                 </li>
-                <li>
-                    <form class="navbar-search" action="javascript:;">
-                        <div class="rel">
-                            <span class="search-icon"><i class="ti-search"></i></span>
-                            <input class="form-control" placeholder="Search here...">
-                        </div>
-                    </form>
-                </li>
+
             </ul>
             <!-- END TOP-LEFT TOOLBAR-->
             <!-- START TOP-RIGHT TOOLBAR-->
@@ -59,10 +52,14 @@
 
                 <li class="dropdown dropdown-user">
                     <a class="nav-link dropdown-toggle link" data-toggle="dropdown">
-                        <img src="{{asset('backend')}}/assets/img/admin-avatar.png" />
+                        @if(\Illuminate\Support\Facades\Auth::user()->image==null)
+                        <img src="{{asset('public_directory')}}/icon/user.png" />
+                        @else
+                            <img src="{{asset('public_directory')}}/image/users/{{\Illuminate\Support\Facades\Auth::user()->image}}" />
+                        @endif
                         <span></span>Admin<i class="fa fa-angle-down m-l-5"></i></a>
                     <ul class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="profile.html"><i class="fa fa-user"></i>Profile</a>
+                        <a class="dropdown-item" href="{{route('bekci.profilePage')}}"><i class="fa fa-user"></i>Profile</a>
                         <a class="dropdown-item" href="profile.html"><i class="fa fa-cog"></i>Settings</a>
                         <a class="dropdown-item" href="javascript:;"><i class="fa fa-support"></i>Support</a>
                         <li class="dropdown-divider"></li>
@@ -79,10 +76,14 @@
         <div id="sidebar-collapse">
             <div class="admin-block d-flex">
                 <div>
-                    <img src="{{asset('backend')}}/assets/img/admin-avatar.png" width="45px" />
+                    @if(\Illuminate\Support\Facades\Auth::user()->image==null)
+                        <img src="{{asset('public_directory')}}/icon/user.png" class="rounded-circle" width="45px" />
+                    @else
+                        <img src="{{asset('public_directory')}}/image/users/{{\Illuminate\Support\Facades\Auth::user()->image}}" class="rounded-circle" width="45px" />
+                    @endif
                 </div>
                 <div class="admin-info">
-                    <div class="font-strong">Alp Eren ÖZDEMİR</div><small>Yönetici</small></div>
+                    <div class="font-strong">{{\Illuminate\Support\Facades\Auth::user()->name}}</div><small>Yönetici</small></div>
             </div>
             <ul class="side-menu metismenu">
                 <li>
@@ -204,6 +205,16 @@
     </nav>
     <!-- END SIDEBAR-->
 <div class="content-wrapper">
+    @if(session('success'))
+        <div class="alert alert-success col-lg-12" style="text-align: center">İşleminiz Başarı ile gerçekleşti</div>
+    @endif
+    @if(session('error'))
+        <div class="alert alert-danger col-lg-12" style="text-align: center">İşleminizde bir problem oluştu!</div>
+    @endif
+    @if(session('alert'))
+        <div class="alert alert-warning col-lg-12" style="text-align: center">İşleminizi kontrol ediniz eksik bilgi veya yanlışlık var!</div>
+    @endif
+
     @yield('content')
 
     <footer class="page-footer">

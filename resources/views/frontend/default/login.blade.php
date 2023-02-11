@@ -9,7 +9,7 @@
                 @CSRF
             <div class="col-md-12">
                 <label>Email Adresi</label>
-                <div class="form-group"><input class="form-control"  type="email" name="email" placeholder="Email Adresi"></div>
+                <div class="form-group"><input class="form-control"  type="email" value="{{old('email')}}" name="email" placeholder="Email Adresi"></div>
             </div>
             <div class="col-md-12">
                 <label>Şifre</label>

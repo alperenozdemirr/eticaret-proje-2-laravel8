@@ -105,6 +105,8 @@
                         @foreach($products as $product)
                         <div class="product product-2">
                             <figure style="background-color: white" class="product-media ">
+                                @if($product->stock==0)<span class="product-label label-out">Tükendi</span>
+                                @elseif($product->stock<6 && $product->stock!=0)<span style="background-color: brown" class="product-label label-out">Tükeniyor</span>@endif
                                 <div class="d-flex justify-content-center">
                                 <a href="product.html">
                                     <img style="height:200px;width: auto;" src="{{asset('public_directory')}}/image/products/{{$product->images[0]->image}}" alt="Product image" class="product-image">

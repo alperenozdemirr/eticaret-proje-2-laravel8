@@ -22,6 +22,11 @@
                                 <h2 class="checkout-title">Hesap Bİlgilerim</h2><!-- End .checkout-title -->
                                 <div class="row">
                                     <div class="col-sm-12">
+                                        @if($user->image==null)
+                                            <img width="100" src="{{asset('public_directory')}}/icon/user.png" class="rounded">
+                                        @else
+                                        <img width="100" src="{{asset('public_directory')}}/image/users/{{$user->image}}" class="rounded" alt="Profil Fotoraf">
+                                        @endif
                                         <label>Adınız Soyadınız *</label>
                                         <input type="text" name="name" value="{{$user->name}}" class="form-control" required="">
                                     </div><!-- End .col-sm-6 -->
