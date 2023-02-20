@@ -34,10 +34,10 @@
                             @CSRF
                             <div class="d-flex justify-content-center">
                                 <div class="preview" id="preview">
-                                    @if(\Illuminate\Support\Facades\Auth::user()->image==null)
+                                    @if($user->image==null)
                                         <img src="{{asset('public_directory')}}/icon/user.png">
                                     @else
-                                        <img src="{{asset('public_directory')}}/image/users/{{\Illuminate\Support\Facades\Auth::user()->image}}">
+                                        <img src="{{asset('public_directory')}}/image/users/{{$user->image}}">
                                     @endif
                                 </div>
                             </div>
@@ -52,7 +52,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
+            <div class="row">
+            <div class="col-md-6">
                 <div class="ibox">
                     <div class="ibox-head">
                         <div class="ibox-title">Şifreni Değiştir</div>
@@ -85,11 +86,44 @@
                     </div>
                 </div>
             </div>
+                <div class="col-md-6">
+                    <div class="ibox">
+                        <div class="ibox-head">
+                            <div class="ibox-title">Hesap Bilgilerim</div>
+                            <div class="ibox-tools">
+                                <a class="ibox-collapse"><i class="fa fa-minus"></i></a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; transform: translate3d(41px, 20px, 0px); top: 0px; left: 0px; will-change: transform;">
+                                    <a class="dropdown-item">option 1</a>
+                                    <a class="dropdown-item">option 2</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox-body">
+                            <form action="{{route('bekci.accountChange')}}" method="POST">
+                                @CSRF
+                                <div class="form-group mt-4">
+                                    <label>İsim</label>
+                                    <input type="text" name="name" value="{{$user->name}}" class="form-control col-md-12">
+                                </div>
+                                <div class="form-group mt-4">
+                                    <label>Email</label>
+                                    <input type="text" disabled value="{{$user->email}}" class="form-control col-md-12">
+                                </div>
+                                <div class="form-group mt-4">
+                                    <label>İrtibat Tel</label>
+                                    <input type="text" name="phone" value="{{$user->phone}}" class="form-control col-md-12">
+                                </div>
+                                <button type="submit" class="btn btn-success col-md-12">Güncelle</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
 @section('css')
-
 @endsection
 @section('js')
     <script src="{{asset('public_directory')}}/script/preview.js"></script>

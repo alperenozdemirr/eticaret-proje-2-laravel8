@@ -41,7 +41,7 @@
         <div class="header-top">
             <div class="container">
                 <div class="header-left">
-                    <a href="tel:#"><i class="icon-phone"></i>Call: +0123 456 789</a>
+                    <a >Support: ozdemiiralperen@gmail.com</a>
                 </div><!-- End .header-left -->
 
                 <div class="header-right">
@@ -56,8 +56,6 @@
                                         <div class="header-menu">
                                             <ul>
                                                 <li><a href="#">Tr</a></li>
-                                                <li><a href="#">French</a></li>
-                                                <li><a href="#">Spanish</a></li>
                                             </ul>
                                         </div><!-- End .header-menu -->
                                     </div>

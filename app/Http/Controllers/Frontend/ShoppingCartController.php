@@ -25,13 +25,23 @@ class ShoppingCartController extends Controller
     }
     public function add(Request $request){
         $stock=Products::find($request->product_id);
+        $check=Baskets::where('user_id',Auth::user()->id)
+                        ->where('product_id',$request->product_id)
+                        ->exists();
         if($stock->stock < $request->count){
             return back()->with('error','Yetersiz Stok');
         }
-        $basket=new Baskets();
-        $basket->user_id=Auth::user()->id;
-        $basket->product_id=$request->product_id;
-        $basket->product_count=$request->count;
+        //gelen id basket'de var ise eklemek yerine arttır
+        if($check==true){
+            $basket=Baskets::where('user_id',Auth::user()->id)
+                ->where('product_id',$request->product_id)->first();
+            $basket->product_count=$basket->product_count+$request->count;
+        }else{
+            $basket=new Baskets();
+            $basket->user_id=Auth::user()->id;
+            $basket->product_id=$request->product_id;
+            $basket->product_count=$request->count;
+        }
         $basket->save();
         if ($basket){
             return redirect(route('shoppingCart'))->with('success','ok');

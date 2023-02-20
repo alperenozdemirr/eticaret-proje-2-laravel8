@@ -41,6 +41,42 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="ibox bg-purple color-white widget-stat">
+                        <div class="ibox-body">
+                            <h2 class="m-b-5 font-strong">{{$totalProduct}}</h2>
+                            <div class="m-b-5">Toplam Ürün</div><i class="ti-bar-chart widget-stat-icon"></i>
+                            <div><small>Adet</small></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="ibox bg-teal color-white widget-stat">
+                        <div class="ibox-body">
+                            <h2 class="m-b-5 font-strong">{{$totalCategory}}</h2>
+                            <div class="m-b-5">Toplam Kategori</div><i class="ti-bar-chart widget-stat-icon"></i>
+                            <div><small>Adet</small></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="ibox bg-pink color-white widget-stat">
+                        <div class="ibox-body">
+                            <h2 class="m-b-5 font-strong">{{$totalBanner}}</h2>
+                            <div class="m-b-5">Toplam Banner</div><i class="ti-bar-chart widget-stat-icon"></i>
+                            <div><small>Adet</small></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="ibox bg-yellow color-white widget-stat">
+                        <div class="ibox-body">
+                            <h2 class="m-b-5 font-strong">{{$totalSlider}}</h2>
+                            <div class="m-b-5">Toplam Slider</div><i class="ti-bar-chart widget-stat-icon"></i>
+                            <div><small>Adet</small></div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>

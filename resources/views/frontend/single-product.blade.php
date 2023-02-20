@@ -5,10 +5,10 @@
         @CSRF
     <main class="main">
         <div class="page-content">
-            <div class="product-details-top">
+            <div class="product-details-top" >
                 <div class="bg-light pb-5 mb-4">
                     <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
-                        <div class="container d-flex align-items-center">
+                        <div class="container d-flex align-items-center" >
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Anasayfa</a></li>
                                 <li class="breadcrumb-item"><a href="#">Ürünler</a></li>
@@ -28,7 +28,7 @@
                             </nav><!-- End .pager-nav -->
                         </div><!-- End .container -->
                     </nav><!-- End .breadcrumb-nav -->
-                    <div class="container">
+                    <div class="container" style="background-color: white">
                         <div class="product-gallery-carousel owl-carousel owl-full owl-nav-dark owl-loaded owl-drag">
                             <!-- End .product-gallery-image -->
 
@@ -52,7 +52,7 @@
                         @if($product->stock==0)
                         <div class="alert alert-dark"><h6 style="color: white">Melesef ürün tükendi!</h6></div>@endif
                             @if($product->stock<6 && $product->stock!=0)
-                                <div class="alert alert-danger"><h6 style="color: white">Acele Et Ürün Tükeniyor!</h6></div>@endif
+                                <div class="alert alert-dark"><h6 style="color: white">Acele Et Ürün Tükeniyor!</h6></div>@endif
                         <div class="row">
                             <div class="col-md-6">
                                 <h1 class="product-title">{{$product->name}}</h1><!-- End .product-title -->
@@ -75,10 +75,11 @@
                             <div class="col-md-6">
                                 <div class="product-details-action">
                                     <div class="details-action-col">
+                                        <input type="hidden" name="product_id" value="{{$product->id}}">
                                         <div class="product-details-quantity">
                                             <input type="number" id="qty" name="count" class="form-control" value="1" min="1" max="{{$product->stock}}" step="1" data-decimals="0" required="" style="display: none;"><div class="input-group  input-spinner"></div>
                                         </div><!-- End .product-details-quantity -->
-                                            <input type="hidden" name="product_id" value="{{$product->id}}">
+
                                         <button type="submit" @if($product->stock==0) disabled style="background-color: brown;" @endif class="btn-product btn-cart"><span>@if($product->stock==0) Tükendi @else Sepete Ekle @endif</span></button>
                                     </div><!-- End .details-action-col -->
                                 </div><!-- End .product-details-action -->
@@ -107,7 +108,7 @@
                 <div class="product-details-tab">
                     <ul class="nav nav-pills justify-content-center" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true">Description</a>
+                            <a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true">Ürün Özellikleri</a>
                         </li>
 
                     </ul>
@@ -123,7 +124,7 @@
             </div><!-- End .container -->
 
             <div class="container">
-                <h2 class="title text-center mb-4">You May Also Like</h2><!-- End .title text-center -->
+                <h2 class="title text-center mb-4">Yeni Eklenen Ürünler</h2><!-- End .title text-center -->
                 <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow owl-loaded owl-drag" data-toggle="owl" data-owl-options="{
                             &quot;nav&quot;: false,
                             &quot;dots&quot;: true,
@@ -163,12 +164,12 @@
                             <div class="owl-item active" style="width: 251.5px; margin-right: 20px;"><div class="product product-7 text-center">
                                     <figure style="background-color: white;" class="product-media">
                                         <div class="d-flex justify-content-center">
-                                        <a href="product.html">
+                                        <a href="{{route('single.product',$item->id)}}">
                                             <img style="width:auto;height: 200px" src="{{asset('public_directory')}}/image/products/{{$item->images[0]->image}}" alt="Product image" class="product-image">
                                         </a>
                                         </div>
                                         <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart"><span>Sepete Ekle</span></a>
+                                            <a href="{{route('single.product',$item->id)}}" class="btn-product btn-cart"><span>Ürünü İncele</span></a>
                                         </div><!-- End .product-action -->
                                     </figure><!-- End .product-media -->
 
@@ -176,7 +177,7 @@
                                         <div class="product-cat">
                                             <a href="#">{{$item->categories->name}}</a>
                                         </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">{{$item->name}}</a></h3><!-- End .product-title -->
+                                        <h3 class="product-title"><a href="{{route('single.product',$item->id)}}">{{$item->name}}</a></h3><!-- End .product-title -->
                                         <div class="product-price">
                                             {{$item->price}}TL
                                         </div><!-- End .product-price -->

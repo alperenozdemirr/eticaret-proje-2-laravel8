@@ -20,7 +20,7 @@
                         @CSRF
                         <div class="form-group">
                             <label>Ürün İsmi</label>
-                            <input class="form-control" @if(session('error')) value="{{old('name')}}" @endif name="name" type="text" placeholder="Kategori İsmi">
+                            <input class="form-control" @if(session('error')) value="{{old('name')}}" @endif name="name" type="text" placeholder="Ürün İsmi">
                         </div>
                         <div class="form-group">
                             <label>Ürün Detay Bilgisi<br>(sadece yazı giriniz!)</label>

@@ -30,7 +30,7 @@
     <!-- START HEADER-->
     <header class="header">
         <div class="page-brand">
-            <a class="link" href="index.html">
+            <a class="link" href="{{route('bekci.index')}}">
                     <span class="brand">Özdemir
                         <span class="brand-tip">Software</span>
                     </span>
@@ -57,11 +57,9 @@
                         @else
                             <img src="{{asset('public_directory')}}/image/users/{{\Illuminate\Support\Facades\Auth::user()->image}}" />
                         @endif
-                        <span></span>Admin<i class="fa fa-angle-down m-l-5"></i></a>
+                        <span></span>Hesabım<i class="fa fa-angle-down m-l-5"></i></a>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="{{route('bekci.profilePage')}}"><i class="fa fa-user"></i>Profile</a>
-                        <a class="dropdown-item" href="profile.html"><i class="fa fa-cog"></i>Settings</a>
-                        <a class="dropdown-item" href="javascript:;"><i class="fa fa-support"></i>Support</a>
                         <li class="dropdown-divider"></li>
                         <a class="dropdown-item" href="{{route('bekci.logout')}}"><i class="fa fa-power-off"></i>Logout</a>
                     </ul>
@@ -88,7 +86,7 @@
             <ul class="side-menu metismenu">
                 <li>
                     <a class="active" href="{{route('bekci.index')}}"><i class="sidebar-item-icon fa fa-th-large"></i>
-                        <span class="nav-label">Dashboard</span>
+                        <span class="nav-label">Ana Ekran</span>
                     </a>
                 </li>
                 <li class="heading">Menü</li>
@@ -163,43 +161,6 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="javascript:;"><i class="sidebar-item-icon fa fa-bookmark"></i>
-                        <span class="nav-label">Basic UI</span><i class="fa fa-angle-left arrow"></i></a>
-                    <ul class="nav-2-level collapse">
-                        <li>
-                            <a href="cards.html">Card</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="icons.html"><i class="sidebar-item-icon fa fa-smile-o"></i>
-                        <span class="nav-label">Icons</span>
-                    </a>
-                </li>
-                <li class="heading">PAGES</li>
-
-                <li>
-                    <a href="javascript:;"><i class="sidebar-item-icon fa fa-sitemap"></i>
-                        <span class="nav-label">Menu Levels</span><i class="fa fa-angle-left arrow"></i></a>
-                    <ul class="nav-2-level collapse">
-                        <li>
-                            <a href="javascript:;">Level 2</a>
-                        </li>
-                        <li>
-                            <a href="javascript:;">
-                                <span class="nav-label">Level 2</span><i class="fa fa-angle-left arrow"></i></a>
-                            <ul class="nav-3-level collapse">
-                                <li>
-                                    <a href="javascript:;">Level 3</a>
-                                </li>
-                                <li>
-                                    <a href="javascript:;">Level 3</a>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
             </ul>
         </div>
     </nav>
@@ -218,8 +179,7 @@
     @yield('content')
 
     <footer class="page-footer">
-        <div class="font-13">2018 © <b>AdminCAST</b> - All rights reserved.</div>
-        <a class="px-4" href="http://themeforest.net/item/adminca-responsive-bootstrap-4-3-angular-4-admin-dashboard-template/20912589" target="_blank">BUY PREMIUM</a>
+        <div class="font-13">2023 © <b>OzdemirSoftware</b> - Tüm hakları saklıdır</div>
         <div class="to-top"><i class="fa fa-angle-double-up"></i></div>
     </footer>
 </div>

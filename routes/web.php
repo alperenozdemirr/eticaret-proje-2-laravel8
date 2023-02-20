@@ -74,6 +74,7 @@ Route::middleware(['bekci'])->group(function (){
     Route::get('my/profile',[\App\Http\Controllers\Backend\ProfileController::class,'show'])->name('bekci.profilePage');
     Route::post('my/profile',[\App\Http\Controllers\Backend\ProfileController::class,'changeImage'])->name('bekci.imageChange');
     Route::post('my/password',[\App\Http\Controllers\Backend\ProfileController::class,'changePassword'])->name('bekci.passwordChange');
+    Route::post('my/account',[\App\Http\Controllers\Backend\ProfileController::class,'changeAccount'])->name('bekci.accountChange');
   });
 });//bekci middleware end!
 Route::get('user/login',[DefaultController::class,'loginPage'])->name('user.loginPage');

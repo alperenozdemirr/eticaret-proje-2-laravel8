@@ -12,7 +12,8 @@ use Illuminate\Support\Str;
 class ProfileController extends Controller
 {
     public function show(){
-        return view('backend.profile');
+        $user=User::find(Auth::user()->id);
+        return view('backend.profile')->with(compact('user'));
     }
     public function changePassword(Request $request){
         $request->flash();
@@ -50,6 +51,17 @@ class ProfileController extends Controller
             return redirect(route('bekci.profilePage'))->with('success','ok');
         }else{
             return back()->withInput()->with('alert','ok');
+        }
+    }
+    public function changeAccount(Request $request){
+        $user=User::find(Auth::user()->id);
+        $user->name=$request->name;
+        $user->phone=$request->phone;
+        $user->save();
+        if($user){
+            return redirect(route('bekci.profilePage'))->with('success','ok');
+        }else{
+            return back()->withInput()->with('error','ok');
         }
     }
 }
